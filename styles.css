@@ -1,131 +1,160 @@
-/* Font and base colors */
+/* ====== GLOBAL STYLES ====== */
 :root {
-    --main-blue: #1e88e5;
-    --text-light: #ffffff;
-    --text-dark: #1a1a1a;
-    --bg-light: #f9f9f9;
-    --bg-dark: #1e1e1e;
-    --card-light: #ffffff;
-    --card-dark: #2c2c2c;
-  }
-  
-  @media (prefers-color-scheme: dark) {
-    body {
-      background: var(--bg-dark);
-      color: var(--text-light);
-    }
-    section {
-      background: var(--card-dark);
-    }
-    nav {
-      background-color: #111;
-      box-shadow: 0 2px 5px rgba(255, 255, 255, 0.05);
-    }
-  }
-  
-  @media (prefers-color-scheme: light) {
-    body {
-      background: var(--bg-light);
-      color: var(--text-dark);
-    }
-    section {
-      background: var(--card-light);
-    }
-    nav {
-      background-color: #fff;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    }
-  }
-  
+  --blue: #1e88e5;
+  --white: #ffffff;
+  --black: #111111;
+  --gray: #f5f5f5;
+  --dark-gray: #1e1e1e;
+  --shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
   body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    padding: 0;
+    background: var(--dark-gray);
+    color: var(--white);
   }
-  
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  nav h1 {
-    font-size: 1.4em;
-    color: var(--main-blue);
-    margin: 0;
-  }
-  
-  main {
-    max-width: 800px;
-    margin: 30px auto;
-    padding: 0 15px;
-  }
-  
   section {
-    padding: 20px;
-    margin-bottom: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    text-align: center;
+    background-color: #2b2b2b;
   }
-  
-  h2 {
-    margin-top: 0;
-    font-size: 1.4em;
-    color: var(--main-blue);
+  nav {
+    background-color: #000;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
   }
-  
-  #clock-display,
-  #stopwatch-display,
-  #timer-display {
-    font-size: 2.5em;
-    margin: 20px 0;
-    font-weight: 600;
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background: var(--gray);
+    color: var(--black);
   }
-  
-  input[type="time"],
-  input[type="number"] {
-    font-size: 1.2em;
-    padding: 8px;
-    margin: 6px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    width: 5em;
-    text-align: center;
+  section {
+    background-color: var(--white);
   }
-  
-  button {
-    font-size: 1em;
-    padding: 10px 16px;
-    margin: 6px;
-    border: none;
-    border-radius: 8px;
-    background-color: var(--main-blue);
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+  nav {
+    background-color: #fff;
+    box-shadow: var(--shadow);
   }
-  
-  button:hover {
-    background-color: #1565c0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  z-index: 1000;
+}
+
+nav h1 {
+  font-size: 1.5em;
+  color: var(--blue);
+}
+
+#nav-controls button {
+  margin-left: 10px;
+  padding: 6px 12px;
+  font-size: 0.9em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--blue);
+  color: var(--white);
+  cursor: pointer;
+}
+
+#nav-controls button:hover {
+  background-color: #1565c0;
+}
+
+main {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 0 15px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+section {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+h2 {
+  color: var(--blue);
+  margin-bottom: 10px;
+}
+
+#ad-container, .ad-placeholder {
+  text-align: center;
+  margin: 10px 0;
+  padding: 10px;
+  border: 2px dashed #ccc;
+  font-size: 0.9em;
+  color: #666;
+  border-radius: 8px;
+}
+
+#ad-container.ad-side {
+  display: none;
+}
+
+@media(min-width: 1024px) {
+  main {
+    grid-template-columns: 3fr 1fr;
   }
-  
-  button:disabled {
-    background-color: #aaa;
-    cursor: not-allowed;
+  .ad-container.ad-side {
+    display: block;
   }
-  
-  @media (max-width: 600px) {
-    nav {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    input[type="number"] {
-      width: 4em;
-    }
-  }
-  
+}
+
+#clock-display, #stopwatch-display, #timer-display {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+input[type="time"], input[type="number"] {
+  font-size: 1.1em;
+  padding: 8px;
+  margin: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+button {
+  background-color: var(--blue);
+  color: var(--white);
+  border: none;
+  padding: 10px 16px;
+  margin: 5px;
+  font-size: 1em;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1565c0;
+}
+
+button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9em;
+  color: #999;
+  margin-top: 30px;
+}
