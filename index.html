@@ -9,8 +9,19 @@
 <body>
   <nav>
     <h1>cClock</h1>
-  </nav>  
+    <div id="nav-controls">
+      <button id="toggle-format">Switch to 12h</button>
+      <button id="toggle-sound">Sound: On</button>
+      <button id="fullscreen-btn">Fullscreen</button>
+    </div>
+  </nav>
+
   <main>
+    <div class="ad-container ad-top">
+      <!-- Placeholder for top ad -->
+      <div class="ad-placeholder">Top Banner Ad</div>
+    </div>
+
     <section id="clock-section">
       <h2>Digital Clock</h2>
       <div id="clock-display">00:00:00</div>
@@ -40,9 +51,29 @@
       <button id="start-timer">Start</button>
       <button id="reset-timer" disabled>Reset</button>
     </section>
+
+    <section id="worldclock-section">
+      <h2>World Clock</h2>
+      <div id="world-clock-display">
+        <div class="world-time" data-timezone="UTC">UTC: <span>00:00:00</span></div>
+        <div class="world-time" data-timezone="America/New_York">New York: <span>00:00:00</span></div>
+        <div class="world-time" data-timezone="Europe/London">London: <span>00:00:00</span></div>
+        <div class="world-time" data-timezone="Asia/Tokyo">Tokyo: <span>00:00:00</span></div>
+      </div>
+    </section>
+
+    <div class="ad-container ad-side">
+      <!-- Placeholder for sidebar ad -->
+      <div class="ad-placeholder">Sidebar Ad</div>
+    </div>
   </main>
+
+  <footer>
+    <p>&copy; 2025 cClock. All rights reserved.</p>
+  </footer>
 
   <audio id="alarm-sound" src="alarm.mp3" preload="auto"></audio>
   <script src="script.js"></script>
 </body>
 </html>
+
