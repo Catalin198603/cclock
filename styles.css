@@ -1,0 +1,131 @@
+/* Font and base colors */
+:root {
+    --main-blue: #1e88e5;
+    --text-light: #ffffff;
+    --text-dark: #1a1a1a;
+    --bg-light: #f9f9f9;
+    --bg-dark: #1e1e1e;
+    --card-light: #ffffff;
+    --card-dark: #2c2c2c;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    body {
+      background: var(--bg-dark);
+      color: var(--text-light);
+    }
+    section {
+      background: var(--card-dark);
+    }
+    nav {
+      background-color: #111;
+      box-shadow: 0 2px 5px rgba(255, 255, 255, 0.05);
+    }
+  }
+  
+  @media (prefers-color-scheme: light) {
+    body {
+      background: var(--bg-light);
+      color: var(--text-dark);
+    }
+    section {
+      background: var(--card-light);
+    }
+    nav {
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  nav h1 {
+    font-size: 1.4em;
+    color: var(--main-blue);
+    margin: 0;
+  }
+  
+  main {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 15px;
+  }
+  
+  section {
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    text-align: center;
+  }
+  
+  h2 {
+    margin-top: 0;
+    font-size: 1.4em;
+    color: var(--main-blue);
+  }
+  
+  #clock-display,
+  #stopwatch-display,
+  #timer-display {
+    font-size: 2.5em;
+    margin: 20px 0;
+    font-weight: 600;
+  }
+  
+  input[type="time"],
+  input[type="number"] {
+    font-size: 1.2em;
+    padding: 8px;
+    margin: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 5em;
+    text-align: center;
+  }
+  
+  button {
+    font-size: 1em;
+    padding: 10px 16px;
+    margin: 6px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--main-blue);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #1565c0;
+  }
+  
+  button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
+  
+  @media (max-width: 600px) {
+    nav {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    input[type="number"] {
+      width: 4em;
+    }
+  }
+  
