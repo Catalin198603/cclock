@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
+
 Sitemap: https://cclock.eu/sitemap.xml
+
+# Google Analytics Tracking
+# Site traffic is analyzed via Google Analytics ID G-58B9TLL9QE
