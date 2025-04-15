@@ -1,0 +1,20 @@
+/* TEAM */
+Developer: Catalin Marian
+Site: https://cclock.eu
+Location: Germany
+Twitter: https://twitter.com/
+
+/* SITE */
+Last update: 2025-04-15
+Technology: HTML, CSS, JavaScript
+Hosted on: GitHub Pages
+Analytics: Google Analytics (G-58B9TLL9QE)
+
+/* THANKS */
+Thanks to: ChatGPT (OpenAI) – for code assistance and guidance
+
+/* STANDARDS */
+Followed: HTML5, CSS3, Mobile-Friendly Best Practices
+
+/* NOTE */
+Be kind to the web. Build things that help people.
