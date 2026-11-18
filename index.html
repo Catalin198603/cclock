@@ -10,7 +10,7 @@
   <meta name="author" content="Catalin">
   <meta name="robots" content="index, follow">
   <title>cClock - Free Online Clock, Timer, Alarm & Stopwatch</title>
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="styles-v2.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9317010883983769" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -75,7 +75,7 @@
 
   <section class="tool-panel" id="alarm">
     <p class="section-kicker">WAKE UP ON TIME</p><h2>Alarm</h2>
-    <input type="time" id="alarm-time" step="60" class="time-input" color-scheme="dark">
+    <div class="alarm-time-wrap"><input type="time" id="alarm-time" step="60" class="time-input"><span class="alarm-clock-icon" aria-hidden="true">◷</span></div>
     <div><button id="set-alarm" class="primary-btn">Set Alarm</button><button id="stop-alarm" class="secondary-btn" disabled>Stop Alarm</button></div>
     <p id="alarm-status" class="status-text">No alarm set</p>
   </section>
