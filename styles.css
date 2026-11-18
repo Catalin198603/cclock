@@ -17,3 +17,15 @@ body.light .tool-card.active{background:#171b20}
 body.light .tool-card.active strong{color:#fff}
 body.light .tool-card.active small{color:#b7c0ca}
 body.light .tool-card small{color:#65717e}
+
+
+/* Desktop hero: cinematic 16:9 presentation */
+@media (min-width:901px){
+  .hero{
+    width:min(1180px,calc(100vw - 44px));
+    max-width:1180px;
+    height:auto;
+    aspect-ratio:16/9;
+    max-height:none;
+  }
+}
