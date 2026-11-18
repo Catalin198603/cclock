@@ -29,3 +29,9 @@ body.light .tool-card small{color:#65717e}
     max-height:none;
   }
 }
+
+/* Native alarm time control visibility */
+body:not(.light) #alarm-time{color-scheme:dark;color:#fff!important;background:#0b0f14!important}
+body:not(.light) #alarm-time::-webkit-calendar-picker-indicator{filter:invert(1);opacity:.9;cursor:pointer}
+body.light #alarm-time{color-scheme:light;color:#101318!important;background:#fff!important}
+body.light #alarm-time::-webkit-calendar-picker-indicator{filter:none;opacity:.85;cursor:pointer}
