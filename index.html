@@ -10,7 +10,7 @@
   <meta name="author" content="Catalin">
   <meta name="robots" content="index, follow">
   <title>cClock - Free Online Clock, Timer, Alarm & Stopwatch</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=4">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9317010883983769" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -57,7 +57,7 @@
 
   <section class="tool-panel" id="timer">
     <div><p class="section-kicker">COUNTDOWN</p><h2>Timer</h2></div>
-    <div id="timer-display" class="panel-display">00:00:00</div>
+    <div id="timer-display" class="panel-display">00:00:00.000</div>
     <div class="timer-inputs">
       <label>Hours<input type="number" id="timer-h" min="0" max="99" value="0"></label>
       <label>Minutes<input type="number" id="timer-m" min="0" max="59" value="5"></label>
@@ -69,7 +69,7 @@
 
   <section class="tool-panel" id="stopwatch">
     <p class="section-kicker">PRECISION</p><h2>Stopwatch</h2>
-    <div id="stopwatch-display" class="panel-display">00:00:00</div>
+    <div id="stopwatch-display" class="panel-display">00:00:00.000</div>
     <button id="start-stopwatch" class="primary-btn">Start</button><button id="reset-stopwatch" class="secondary-btn" disabled>Reset</button>
   </section>
 
@@ -82,7 +82,7 @@
 
   <section class="tool-panel" id="pomodoro">
     <p class="section-kicker">FOCUS & PRODUCTIVITY</p><h2>Pomodoro</h2>
-    <div id="pomodoro-display" class="panel-display">25:00</div>
+    <div id="pomodoro-display" class="panel-display">25:00.000</div>
     <div class="preset-row"><button data-pomodoro="25">Focus 25</button><button data-pomodoro="5">Short break 5</button><button data-pomodoro="15">Long break 15</button></div>
     <button id="pomodoro-start" class="primary-btn">Start</button><button id="pomodoro-reset" class="secondary-btn">Reset</button>
   </section>
@@ -105,6 +105,6 @@
 </main>
 <footer><span class="brand footer-brand"><span>c</span>Clock</span><p>Free online time tools, available anytime.</p><p>© 2026 cClock. All rights reserved.</p></footer>
 <audio id="alarm-sound" src="alarm.mp3" preload="auto"></audio>
-<script src="script.js"></script>
+<script src="script.js?v=4"></script>
 </body>
 </html>
