@@ -20,7 +20,7 @@
 <header class="topbar">
   <a class="brand" href="https://cclock.eu/" aria-label="cClock home"><span>c</span>Clock</a>
   <nav class="main-nav" aria-label="Main navigation">
-    <a class="nav-link active" href="#clock">Clock</a><a class="nav-link" href="#timer">Timer</a><a class="nav-link" href="#stopwatch">Stopwatch</a><a class="nav-link" href="alarm.html">Alarm</a><a class="nav-link" href="#pomodoro">Pomodoro</a><a class="nav-link" href="world-clock.html">World Clock</a>
+    <a class="nav-link active" href="#clock">Clock</a><a class="nav-link" href="timer.html">Timer</a><a class="nav-link" href="stopwatch.html">Stopwatch</a><a class="nav-link" href="alarm.html">Alarm</a><a class="nav-link" href="pomodoro-timer.html">Pomodoro</a><a class="nav-link" href="world-clock.html">World Clock</a>
   </nav>
   <div class="top-actions"><button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">☾</button><button id="fullscreen-btn" class="icon-btn" aria-label="Fullscreen">⛶</button><button id="toggle-format" class="compact-btn">24H</button></div>
 </header>
@@ -28,10 +28,10 @@
   <section class="hero" id="clock"><div class="hero-overlay"></div><div class="hero-content"><p class="eyebrow">YOUR TIME, BEAUTIFULLY SIMPLE</p><h1 class="sr-only">Free Online Clock and Time Tools</h1><div id="clock-display" class="clock-display">00:00:<span>00</span></div><div id="date-display" class="date-display"></div><div id="timezone-display" class="timezone-display">Local time</div><div class="hero-actions"><button id="toggle-sound" class="glass-btn">♪ Sound On</button><button id="hero-fullscreen" class="primary-btn">⛶ Fullscreen</button></div></div></section>
   <section class="tool-grid" aria-label="cClock tools">
     <a class="tool-card active" href="#clock"><span class="tool-icon">◷</span><strong>Clock</strong><small>Live time & date</small></a>
-    <a class="tool-card" href="#timer"><span class="tool-icon">⌛</span><strong>Timer</strong><small>Countdown timer</small></a>
-    <a class="tool-card" href="#stopwatch"><span class="tool-icon">⏱</span><strong>Stopwatch</strong><small>Measure time</small></a>
+    <a class="tool-card" href="timer.html"><span class="tool-icon">⌛</span><strong>Timer</strong><small>Countdown timer</small></a>
+    <a class="tool-card" href="stopwatch.html"><span class="tool-icon">⏱</span><strong>Stopwatch</strong><small>Measure time</small></a>
     <a class="tool-card" href="alarm.html"><span class="tool-icon">♢</span><strong>Alarm</strong><small>Set multiple alarms</small></a>
-    <a class="tool-card" href="#pomodoro"><span class="tool-icon">◉</span><strong>Pomodoro</strong><small>Focus & productivity</small></a>
+    <a class="tool-card" href="pomodoro-timer.html"><span class="tool-icon">◉</span><strong>Pomodoro</strong><small>Focus & productivity</small></a>
     <a class="tool-card" href="world-clock.html"><span class="tool-icon">◎</span><strong>World Clock</strong><small>Time anywhere</small></a>
   </section>
   <section class="tool-panel" id="timer"><div><p class="section-kicker">COUNTDOWN</p><h2>Online Timer</h2></div><div id="timer-display" class="panel-display">00:00:00.000</div><div class="timer-inputs"><label>Hours<input type="number" id="timer-h" min="0" max="99" value="0"></label><label>Minutes<input type="number" id="timer-m" min="0" max="59" value="5"></label><label>Seconds<input type="number" id="timer-s" min="0" max="59" value="0"></label></div><div class="preset-row"><button data-minutes="1">1 min</button><button data-minutes="5">5 min</button><button data-minutes="10">10 min</button><button data-minutes="15">15 min</button><button data-minutes="30">30 min</button><button data-minutes="60">1 hour</button></div><div><button id="start-timer" class="primary-btn">Start</button><button id="reset-timer" class="secondary-btn" disabled>Reset</button></div></section>
