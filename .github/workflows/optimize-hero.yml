@@ -1,0 +1,31 @@
+name: Optimize cClock hero images
+
+on:
+  push:
+    paths:
+      - '.github/workflows/optimize-hero.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install WebP tools
+        run: sudo apt-get update && sudo apt-get install -y webp
+      - name: Create responsive hero images
+        run: |
+          dwebp cclock-hero.webp -o /tmp/hero.png
+          cwebp -quiet -q 72 -resize 720 0 /tmp/hero.png -o cclock-hero-720.webp
+          cwebp -quiet -q 76 -resize 1200 0 /tmp/hero.png -o cclock-hero-1200.webp
+          ls -lh cclock-hero*.webp
+      - name: Commit optimized images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cclock-hero-720.webp cclock-hero-1200.webp
+          git diff --cached --quiet || git commit -m "Add responsive optimized hero images"
+          git push
