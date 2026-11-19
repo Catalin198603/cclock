@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Current local time in major cities around the world. Compare time zones instantly with cClock.">
+<meta name="robots" content="index, follow"><title>World Clock - Current Time in Major Cities | cClock</title>
+<link rel="stylesheet" href="styles.css?v=8">
+<style>
+.world-page{max-width:1180px;margin:0 auto;padding:42px 20px 70px}.world-page-head{text-align:center;margin-bottom:30px}.world-page-head h1{font-size:clamp(2.2rem,5vw,4.4rem);margin:8px 0}.world-page-head p{color:var(--muted);max-width:720px;margin:0 auto}.city-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.city-clock{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center}.city-clock strong{display:block;font-size:1rem;margin-bottom:8px}.city-clock time{display:block;font-size:1.7rem;font-weight:800}.city-clock small{display:block;color:var(--muted);margin-top:5px}.back-home{display:inline-block;margin-top:28px;color:var(--orange);font-weight:800;text-decoration:none}@media(max-width:900px){.city-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.city-grid{grid-template-columns:1fr}}
+body.light .city-clock{background:#fff;color:#101318;border-color:#cbd3dc}
+</style>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="index.html"><span>c</span>Clock</a><nav class="main-nav"><a class="nav-link" href="index.html">Clock</a><span class="nav-link active">World Clock</span></nav><div class="top-actions"><button id="theme-toggle" class="icon-btn">☾</button><button id="toggle-format" class="compact-btn">24H</button></div></header>
+<main class="world-page"><div class="world-page-head"><p class="section-kicker">TIME AROUND THE WORLD</p><h1>World Clock</h1><p>Live local time in major cities around the world.</p></div><div class="city-grid" id="city-grid"></div><a class="back-home" href="index.html">← Back to cClock</a></main>
+<script>
+const cities=[
+['New York','America/New_York'],['Los Angeles','America/Los_Angeles'],['Chicago','America/Chicago'],['Toronto','America/Toronto'],['Vancouver','America/Vancouver'],['Mexico City','America/Mexico_City'],['São Paulo','America/Sao_Paulo'],['Buenos Aires','America/Argentina/Buenos_Aires'],
+['London','Europe/London'],['Dublin','Europe/Dublin'],['Lisbon','Europe/Lisbon'],['Paris','Europe/Paris'],['Berlin','Europe/Berlin'],['Rome','Europe/Rome'],['Madrid','Europe/Madrid'],['Amsterdam','Europe/Amsterdam'],['Vienna','Europe/Vienna'],['Zurich','Europe/Zurich'],['Stockholm','Europe/Stockholm'],['Athens','Europe/Athens'],['Bucharest','Europe/Bucharest'],['Istanbul','Europe/Istanbul'],
+['Cairo','Africa/Cairo'],['Johannesburg','Africa/Johannesburg'],['Nairobi','Africa/Nairobi'],['Dubai','Asia/Dubai'],['Riyadh','Asia/Riyadh'],['Jerusalem','Asia/Jerusalem'],['Delhi','Asia/Kolkata'],['Bangkok','Asia/Bangkok'],['Singapore','Asia/Singapore'],['Hong Kong','Asia/Hong_Kong'],['Beijing','Asia/Shanghai'],['Seoul','Asia/Seoul'],['Tokyo','Asia/Tokyo'],
+['Jakarta','Asia/Jakarta'],['Manila','Asia/Manila'],['Kuala Lumpur','Asia/Kuala_Lumpur'],['Taipei','Asia/Taipei'],['Ho Chi Minh City','Asia/Ho_Chi_Minh'],['Sydney','Australia/Sydney'],['Melbourne','Australia/Melbourne'],['Perth','Australia/Perth'],['Brisbane','Australia/Brisbane'],['Adelaide','Australia/Adelaide'],['Auckland','Pacific/Auckland'],['Honolulu','Pacific/Honolulu'],['Fiji','Pacific/Fiji']
+];
+let is24=true;const grid=document.getElementById('city-grid');cities.forEach(([city,tz])=>{const d=document.createElement('div');d.className='city-clock';d.dataset.tz=tz;d.innerHTML='<strong>'+city+'</strong><time>--:--:--</time><small>'+tz.replaceAll('_',' ')+'</small>';grid.appendChild(d)});
+function update(){const now=new Date();document.querySelectorAll('.city-clock').forEach(el=>el.querySelector('time').textContent=now.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:!is24,timeZone:el.dataset.tz}))}update();setInterval(update,1000);
+document.getElementById('theme-toggle').onclick=function(){document.body.classList.toggle('light');this.textContent=document.body.classList.contains('light')?'☀':'☾'};
+document.getElementById('toggle-format').onclick=function(){is24=!is24;this.textContent=is24?'24H':'12H';update()};
+</script></body></html>

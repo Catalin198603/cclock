@@ -1,197 +1,29 @@
-// ===== Helper: Add leading zero =====
-function zfill(num) {
-  return num.toString().padStart(2, '0');
-}
-
-// ===== Digital Clock =====
-let is24Hour = true;
-function updateClock() {
-  const now = new Date();
-  let hours = now.getHours();
-  const minutes = zfill(now.getMinutes());
-  const seconds = zfill(now.getSeconds());
-  let display = '';
-  if (!is24Hour) {
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12 || 12;
-    display = `${zfill(hours)}:${minutes}:${seconds} ${ampm}`;
-  } else {
-    display = `${zfill(hours)}:${minutes}:${seconds}`;
-  }
-  document.getElementById('clock-display').textContent = display;
-}
-setInterval(updateClock, 1000);
-updateClock();
-
-// ===== Alarm =====
-let alarmTimeout = null;
-const alarmSound = document.getElementById('alarm-sound');
-const alarmInput = document.getElementById('alarm-time');
-const setAlarmBtn = document.getElementById('set-alarm');
-const stopAlarmBtn = document.getElementById('stop-alarm');
-
-setAlarmBtn.addEventListener('click', () => {
-  if (alarmInput.value) {
-    const [hour, minute] = alarmInput.value.split(":").map(Number);
-    const now = new Date();
-    const alarm = new Date();
-    alarm.setHours(hour, minute, 0, 0);
-    if (alarm < now) alarm.setDate(alarm.getDate() + 1);
-    const timeout = alarm.getTime() - now.getTime();
-    alarmTimeout = setTimeout(() => {
-      alarmSound.loop = true;
-      alarmSound.play();
-      stopAlarmBtn.disabled = false;
-      alert("⏰ Alarm is ringing!");
-    }, timeout);
-    stopAlarmBtn.disabled = true;
-  }
-});
-
-stopAlarmBtn.addEventListener('click', () => {
-  alarmSound.pause();
-  alarmSound.currentTime = 0;
-  alarmSound.loop = false;
-  clearTimeout(alarmTimeout);
-  stopAlarmBtn.disabled = true;
-});
-
-// ===== Stopwatch =====
-let stopwatchInterval;
-let stopwatchTime = 0;
-const stopwatchDisplay = document.getElementById('stopwatch-display');
-const startStopwatch = document.getElementById('start-stopwatch');
-const resetStopwatch = document.getElementById('reset-stopwatch');
-
-startStopwatch.addEventListener('click', () => {
-  if (stopwatchInterval) {
-    clearInterval(stopwatchInterval);
-    stopwatchInterval = null;
-    startStopwatch.textContent = "Continue";
-    resetStopwatch.disabled = false;
-  } else {
-    const start = Date.now() - stopwatchTime;
-    stopwatchInterval = setInterval(() => {
-      stopwatchTime = Date.now() - start;
-      const hrs = Math.floor(stopwatchTime / 3600000);
-      const mins = Math.floor((stopwatchTime % 3600000) / 60000);
-      const secs = Math.floor((stopwatchTime % 60000) / 1000);
-      stopwatchDisplay.textContent = `${zfill(hrs)}:${zfill(mins)}:${zfill(secs)}`;
-    }, 1000);
-    startStopwatch.textContent = "Pause";
-    resetStopwatch.disabled = true;
-  }
-});
-
-resetStopwatch.addEventListener('click', () => {
-  clearInterval(stopwatchInterval);
-  stopwatchTime = 0;
-  stopwatchDisplay.textContent = "00:00:00";
-  startStopwatch.textContent = "Start";
-  resetStopwatch.disabled = true;
-});
-
-// ===== Timer =====
-let timerInterval;
-let timerRemaining = 0;
-const timerDisplay = document.getElementById('timer-display');
-const timerStart = document.getElementById('start-timer');
-const timerReset = document.getElementById('reset-timer');
-const timerH = document.getElementById('timer-h');
-const timerM = document.getElementById('timer-m');
-const timerS = document.getElementById('timer-s');
-
-timerStart.addEventListener('click', () => {
-  if (timerInterval) {
-    clearInterval(timerInterval);
-    timerInterval = null;
-    timerStart.textContent = 'Continue';
-  } else {
-    if (timerStart.textContent === 'Continue' && timerRemaining > 0) {
-      timerInterval = setInterval(runTimer, 1000);
-      timerStart.textContent = 'Pause';
-    } else {
-      const h = parseInt(timerH.value) || 0;
-      const m = parseInt(timerM.value) || 0;
-      const s = parseInt(timerS.value) || 0;
-      timerRemaining = h * 3600 + m * 60 + s;
-      if (timerRemaining > 0) {
-        timerInterval = setInterval(runTimer, 1000);
-        timerStart.textContent = 'Pause';
-        timerReset.disabled = false;
-        timerH.disabled = timerM.disabled = timerS.disabled = true;
-      }
-    }
-  }
-});
-
-timerReset.addEventListener('click', () => {
-  clearInterval(timerInterval);
-  timerInterval = null;
-  timerRemaining = 0;
-  timerDisplay.textContent = '00:00:00';
-  timerStart.textContent = 'Start';
-  timerH.disabled = timerM.disabled = timerS.disabled = false;
-  timerReset.disabled = true;
-});
-
-function runTimer() {
-  if (timerRemaining > 0) {
-    timerRemaining--;
-    const hrs = Math.floor(timerRemaining / 3600);
-    const mins = Math.floor((timerRemaining % 3600) / 60);
-    const secs = timerRemaining % 60;
-    timerDisplay.textContent = `${zfill(hrs)}:${zfill(mins)}:${zfill(secs)}`;
-  } else {
-    clearInterval(timerInterval);
-    timerInterval = null;
-    alert('⏳ Time is up!');
-    try {
-      alarmSound.play();
-    } catch (e) {}
-    timerStart.textContent = 'Start';
-    timerH.disabled = timerM.disabled = timerS.disabled = false;
-    timerReset.disabled = true;
-  }
-}
-
-// ===== World Clock =====
-const worldTimeEls = document.querySelectorAll('.world-time');
-function updateWorldClocks() {
-  worldTimeEls.forEach(el => {
-    const tz = el.dataset.timezone;
-    const now = new Date().toLocaleTimeString('en-GB', {
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      timeZone: tz
-    });
-    el.querySelector('span').textContent = now;
-  });
-}
-setInterval(updateWorldClocks, 1000);
-updateWorldClocks();
-
-// ===== Fullscreen Toggle =====
-document.getElementById('fullscreen-btn').addEventListener('click', () => {
-  if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen();
-  } else {
-    document.exitFullscreen();
-  }
-});
-
-// ===== Toggle Format 12h/24h =====
-document.getElementById('toggle-format').addEventListener('click', function () {
-  is24Hour = !is24Hour;
-  this.textContent = is24Hour ? 'Switch to 12h' : 'Switch to 24h';
-  updateClock();
-});
-
-// ===== Toggle Sound On/Off =====
-let soundOn = true;
-document.getElementById('toggle-sound').addEventListener('click', function () {
-  soundOn = !soundOn;
-  alarmSound.muted = !soundOn;
-  this.textContent = soundOn ? 'Sound: On' : 'Sound: Off';
-});
+function zfill(n){return String(n).padStart(2,'0')}let is24Hour=true,soundOn=true;const alarmSound=document.getElementById('alarm-sound');
+function updateClock(){const now=new Date();let h=now.getHours(),suffix='';if(!is24Hour){suffix=h>=12?' PM':' AM';h=h%12||12}document.getElementById('clock-display').innerHTML=`${zfill(h)}:${zfill(now.getMinutes())}:<span>${zfill(now.getSeconds())}</span>${suffix}`;document.getElementById('date-display').textContent=new Intl.DateTimeFormat('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'}).format(now);document.getElementById('timezone-display').textContent=Intl.DateTimeFormat().resolvedOptions().timeZone.replace('_',' ')}setInterval(updateClock,1000);updateClock();
+const full=()=>!document.fullscreenElement?document.documentElement.requestFullscreen():document.exitFullscreen();document.getElementById('fullscreen-btn').onclick=full;document.getElementById('hero-fullscreen').onclick=full;
+document.getElementById('toggle-format').onclick=function(){is24Hour=!is24Hour;this.textContent=is24Hour?'24H':'12H';updateClock()};
+document.getElementById('toggle-sound').onclick=function(){soundOn=!soundOn;alarmSound.muted=!soundOn;this.textContent=soundOn?'♪ Sound On':'♪ Sound Off'};
+document.getElementById('theme-toggle').onclick=function(){document.body.classList.toggle('light');this.textContent=document.body.classList.contains('light')?'☀':'☾'};
+function goTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});document.querySelectorAll('[data-target]').forEach(x=>x.classList.toggle('active',x.dataset.target===id))}
+document.querySelectorAll('[data-target]').forEach(x=>x.onclick=()=>goTo(x.dataset.target));
+let alarmTimeout=null;const alarmInput=document.getElementById('alarm-time'),stopAlarm=document.getElementById('stop-alarm'),alarmStatus=document.getElementById('alarm-status');
+document.getElementById('set-alarm').onclick=()=>{if(!alarmInput.value)return;clearTimeout(alarmTimeout);const [h,m]=alarmInput.value.split(':').map(Number),now=new Date(),at=new Date();at.setHours(h,m,0,0);if(at<=now)at.setDate(at.getDate()+1);alarmTimeout=setTimeout(()=>{alarmSound.loop=true;alarmSound.play().catch(()=>{});stopAlarm.disabled=false;alarmStatus.textContent='Alarm is ringing!'},at-now);alarmStatus.textContent=`Alarm set for ${alarmInput.value}`;stopAlarm.disabled=false};
+stopAlarm.onclick=()=>{clearTimeout(alarmTimeout);alarmSound.pause();alarmSound.currentTime=0;alarmSound.loop=false;stopAlarm.disabled=true;alarmStatus.textContent='No alarm set'};
+let swInt=null,swTime=0,swStartedAt=0;const swDisplay=document.getElementById('stopwatch-display'),swStart=document.getElementById('start-stopwatch'),swReset=document.getElementById('reset-stopwatch');
+function formatHMSms(ms){ms=Math.max(0,ms);const hrs=Math.floor(ms/3600000),mins=Math.floor(ms%3600000/60000),secs=Math.floor(ms%60000/1000),msec=Math.floor(ms%1000);return `${zfill(hrs)}:${zfill(mins)}:${zfill(secs)}.${String(msec).padStart(3,'0')}`}
+function formatMSms(ms){ms=Math.max(0,ms);const totalSec=Math.floor(ms/1000),mins=Math.floor(totalSec/60),secs=totalSec%60,msec=Math.floor(ms%1000);return `${zfill(mins)}:${zfill(secs)}.${String(msec).padStart(3,'0')}`}
+swStart.onclick=()=>{if(swInt){swTime=performance.now()-swStartedAt;clearInterval(swInt);swInt=null;swStart.textContent='Continue';swReset.disabled=false}else{swStartedAt=performance.now()-swTime;swInt=setInterval(()=>{swTime=performance.now()-swStartedAt;swDisplay.textContent=formatHMSms(swTime)},16);swStart.textContent='Pause';swReset.disabled=true}};
+swReset.onclick=()=>{clearInterval(swInt);swInt=null;swTime=0;swDisplay.textContent='00:00:00.000';swStart.textContent='Start';swReset.disabled=true};
+let timerInt=null,timerRemainingMs=0,timerEnd=0;const td=document.getElementById('timer-display'),ts=document.getElementById('start-timer'),tr=document.getElementById('reset-timer'),th=document.getElementById('timer-h'),tm=document.getElementById('timer-m'),tsec=document.getElementById('timer-s');
+function showTimer(){td.textContent=formatHMSms(timerRemainingMs)}
+function tickTimer(){timerRemainingMs=Math.max(0,timerEnd-performance.now());showTimer();if(timerRemainingMs<=0){clearInterval(timerInt);timerInt=null;ts.textContent='Start';if(soundOn)alarmSound.play().catch(()=>{});th.disabled=tm.disabled=tsec.disabled=false}}
+ts.onclick=()=>{if(timerInt){timerRemainingMs=Math.max(0,timerEnd-performance.now());clearInterval(timerInt);timerInt=null;ts.textContent='Continue';return}if(timerRemainingMs<=0)timerRemainingMs=((+th.value||0)*3600+(+tm.value||0)*60+(+tsec.value||0))*1000;if(timerRemainingMs>0){timerEnd=performance.now()+timerRemainingMs;showTimer();timerInt=setInterval(tickTimer,16);ts.textContent='Pause';tr.disabled=false;th.disabled=tm.disabled=tsec.disabled=true}};
+tr.onclick=()=>{clearInterval(timerInt);timerInt=null;timerRemainingMs=0;td.textContent='00:00:00.000';ts.textContent='Start';tr.disabled=true;th.disabled=tm.disabled=tsec.disabled=false};
+document.querySelectorAll('[data-minutes]').forEach(b=>b.onclick=()=>{clearInterval(timerInt);timerInt=null;timerRemainingMs=+b.dataset.minutes*60000;th.value=Math.floor(timerRemainingMs/3600000);tm.value=Math.floor(timerRemainingMs%3600000/60000);tsec.value=0;showTimer();ts.textContent='Start';th.disabled=tm.disabled=tsec.disabled=false;tr.disabled=false});
+const worldEls=document.querySelectorAll('.world-time');function updateWorld(){worldEls.forEach(el=>el.querySelector('span').textContent=new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:el.dataset.timezone}))}setInterval(updateWorld,1000);updateWorld();
+let pomoInt=null,pomoRemainingMs=25*60000,pomoSelected=25,pomoEnd=0;const pd=document.getElementById('pomodoro-display'),ps=document.getElementById('pomodoro-start');
+function showPomo(){pd.textContent=formatMSms(pomoRemainingMs)}
+function tickPomo(){pomoRemainingMs=Math.max(0,pomoEnd-performance.now());showPomo();if(pomoRemainingMs<=0){clearInterval(pomoInt);pomoInt=null;ps.textContent='Start';if(soundOn)alarmSound.play().catch(()=>{})}}
+document.querySelectorAll('[data-pomodoro]').forEach(b=>b.onclick=()=>{clearInterval(pomoInt);pomoInt=null;pomoSelected=+b.dataset.pomodoro;pomoRemainingMs=pomoSelected*60000;ps.textContent='Start';showPomo()});
+ps.onclick=()=>{if(pomoInt){pomoRemainingMs=Math.max(0,pomoEnd-performance.now());clearInterval(pomoInt);pomoInt=null;ps.textContent='Continue'}else if(pomoRemainingMs>0){pomoEnd=performance.now()+pomoRemainingMs;pomoInt=setInterval(tickPomo,16);ps.textContent='Pause'}};
+document.getElementById('pomodoro-reset').onclick=()=>{clearInterval(pomoInt);pomoInt=null;pomoRemainingMs=pomoSelected*60000;ps.textContent='Start';showPomo()};
