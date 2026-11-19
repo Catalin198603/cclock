@@ -66,3 +66,28 @@ body.light .cc-btn.primary{background:linear-gradient(135deg,#ff6a00,#ff8a1f);co
   .cc-btn{width:100%}
 }
 @media(prefers-reduced-motion:reduce){.cc-consent-backdrop,.cc-slider,.cc-slider:before{transition:none}}
+
+
+/* Desktop polish: clearer hierarchy, tighter footprint, balanced actions */
+@media(min-width:761px){
+  .cc-consent{
+    bottom:12px;
+    padding:18px 20px;
+    gap:24px;
+    border-radius:14px;
+  }
+  .cc-title{font-size:18px;margin-bottom:5px}
+  .cc-text{font-size:13.5px;line-height:1.5}
+  .cc-actions{
+    flex-wrap:nowrap;
+    align-items:center;
+    gap:10px;
+  }
+  .cc-btn{
+    min-width:112px;
+    padding:11px 17px;
+    font-size:13.5px;
+    white-space:nowrap;
+  }
+  .cc-btn.primary{min-width:138px}
+}
