@@ -87,3 +87,18 @@ if(homeAlarmPicker&&alarmInput){homeAlarmPicker.addEventListener('click',()=>{tr
   }));
   applyScale();
 })();
+
+
+// cclock-3 desktop background image toggle
+(()=>{
+  const hero=document.getElementById('clock');
+  const toggle=document.getElementById('clock-background-toggle');
+  if(!hero||!toggle)return;
+  let photoOn=true;
+  toggle.addEventListener('click',()=>{
+    photoOn=!photoOn;
+    hero.classList.toggle('no-photo',!photoOn);
+    toggle.setAttribute('aria-pressed',String(photoOn));
+    toggle.setAttribute('aria-label',photoOn?'Hide background image':'Show background image');
+  });
+})();
