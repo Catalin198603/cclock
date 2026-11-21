@@ -300,3 +300,22 @@ body.light .seo-link-grid a:hover{background:#fff8f2}
   .date-display{margin-top:18px}
   .hero-actions{margin-top:20px}
 }
+
+
+/* Optional plain background mode */
+@media(min-width:1100px){
+  .hero.no-photo .hero-media{display:none}
+  .hero.no-photo{
+    background:linear-gradient(180deg,#0b1016 0%,#0a0f15 100%)!important;
+  }
+  .hero.no-photo .hero-overlay{
+    background:radial-gradient(circle at 50% 45%,rgba(255,106,0,.055),transparent 38%),linear-gradient(180deg,rgba(255,255,255,.01),rgba(0,0,0,.12));
+  }
+  .hero.no-photo .clock-display{ text-shadow:none }
+  .hero.no-photo .date-display,
+  .hero.no-photo .timezone-display{ text-shadow:none }
+  #clock-background-toggle[aria-pressed="false"]{
+    opacity:.68;
+    border-style:dashed;
+  }
+}
