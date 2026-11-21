@@ -1,0 +1,37 @@
+/* cClock digital digit mode */
+#digit-style-toggle{
+  min-width:54px;
+  font-size:11px;
+  letter-spacing:.7px;
+  font-weight:800;
+}
+#digit-style-toggle[aria-pressed="true"]{
+  border-color:var(--orange)!important;
+  color:var(--orange)!important;
+  box-shadow:inset 0 0 0 1px rgba(255,106,0,.18);
+}
+body.digital-digits .clock-display,
+body.digital-digits .panel-display,
+body.digital-digits #timer-display,
+body.digital-digits #stopwatch-display,
+body.digital-digits #pomodoro-display,
+body.digital-digits .world-time span,
+body.digital-digits .city-clock time,
+body.digital-digits .time-display,
+body.digital-digits #d{
+  font-family:ui-monospace,"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace!important;
+  font-variant-numeric:tabular-nums slashed-zero;
+  font-feature-settings:"tnum" 1,"zero" 1;
+  font-weight:700!important;
+  letter-spacing:.035em!important;
+}
+body.digital-digits .clock-display{
+  letter-spacing:calc(.025em * var(--clock-scale,1))!important;
+}
+body.digital-digits .panel-display,
+body.digital-digits #d{
+  text-shadow:0 0 18px rgba(255,106,0,.10);
+}
+@media(max-width:560px){
+  #digit-style-toggle{min-width:48px;padding-left:8px;padding-right:8px}
+}
