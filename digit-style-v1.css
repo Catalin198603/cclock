@@ -1,4 +1,12 @@
-/* cClock digital digit mode */
+/* cClock digital digit mode — DSEG7 Classic Bold (OFL-1.1) */
+@font-face{
+  font-family:"DSEG7 Classic";
+  src:url("https://cdn.jsdelivr.net/gh/keshikan/DSEG@a32644015f2c81b98bc6a80e897770780003b15e/fonts/DSEG7-Classic/DSEG7Classic-Bold.woff2") format("woff2");
+  font-style:normal;
+  font-weight:700;
+  font-display:swap;
+}
+
 #digit-style-toggle{
   min-width:54px;
   font-size:11px;
@@ -19,14 +27,14 @@ body.digital-digits .world-time span,
 body.digital-digits .city-clock time,
 body.digital-digits .time-display,
 body.digital-digits #d{
-  font-family:ui-monospace,"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace!important;
-  font-variant-numeric:tabular-nums slashed-zero;
-  font-feature-settings:"tnum" 1,"zero" 1;
+  font-family:"DSEG7 Classic",ui-monospace,Consolas,"Liberation Mono",monospace!important;
+  font-variant-numeric:tabular-nums;
   font-weight:700!important;
-  letter-spacing:.035em!important;
+  font-style:normal!important;
+  letter-spacing:.02em!important;
 }
 body.digital-digits .clock-display{
-  letter-spacing:calc(.025em * var(--clock-scale,1))!important;
+  letter-spacing:calc(.018em * var(--clock-scale,1))!important;
 }
 body.digital-digits .panel-display,
 body.digital-digits #d{
