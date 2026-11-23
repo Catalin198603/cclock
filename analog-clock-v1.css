@@ -51,3 +51,20 @@ body.analog-mode .hero #toggle-sound,body.analog-mode .hero #hero-fullscreen{pos
  body.analog-mode .hero + .tool-grid{margin-top:18px!important}
  body.analog-mode .hero{margin-bottom:0!important}
 }
+
+/* Light theme: give the analog dial a bright, readable face while preserving
+   the user's selected accent color on the bezel and quarter-hour markers. */
+body.light #analog-clock{
+ background:radial-gradient(circle at 42% 28%,#ffffff 0%,#f1f5f9 54%,#dce5ee 100%);
+ box-shadow:0 0 0 3px rgba(33,48,67,.16),0 0 19px 3px var(--analog-ring-glow,rgba(255,106,0,.28)),0 0 38px var(--analog-ring-glow,rgba(255,106,0,.22)),inset 0 0 0 6px rgba(255,255,255,.65),inset 0 0 25px rgba(71,85,105,.12);
+}
+body.light #analog-clock:before{border-color:rgba(37,52,73,.2)}
+body.light #analog-clock .analog-tick{background:#8795a8}
+body.light #analog-clock .analog-tick.major{background:#344357;box-shadow:none}
+body.light #analog-clock .analog-tick.quarter{background:var(--analog-ring-color,#ff6a00);box-shadow:0 0 6px var(--analog-ring-glow,rgba(255,106,0,.35))}
+body.light #analog-clock .analog-number{color:#172235;text-shadow:0 1px 1px rgba(255,255,255,.8)}
+body.light #analog-clock .analog-brand{color:#172235;text-shadow:0 1px 1px rgba(255,255,255,.65)}
+body.light #analog-clock #analog-hour{background:linear-gradient(90deg,#344357,#7a899b 45%,#344357);box-shadow:1px 2px 3px rgba(30,41,59,.3)}
+body.light #analog-clock #analog-minute{background:linear-gradient(90deg,#405168,#9aa8b8 45%,#405168);box-shadow:1px 2px 3px rgba(30,41,59,.25)}
+body.light #analog-clock .analog-center{border-color:#fff;box-shadow:0 1px 4px rgba(30,41,59,.35)}
+body.light #analog-clock .analog-readout{background:rgba(255,255,255,.94);color:#172235;box-shadow:0 0 12px var(--analog-ring-glow,rgba(255,106,0,.25))}
