@@ -58,8 +58,16 @@ body.digital-digits #d{
     margin-right:auto;
     text-align:center;
     white-space:nowrap;
-    font-size:clamp(32px,9.2vw,42px)!important;
+    font-size:clamp(18px,6.1vw,30px)!important;
     letter-spacing:0!important;
     line-height:1.08;
+  }
+}
+
+/* Narrow phones: allow the full 12-character digital time to fit inside card padding. */
+@media(max-width:380px){
+  body.digital-digits #timer-display,
+  body.digital-digits #stopwatch-display{
+    font-size:5.8vw!important;
   }
 }
