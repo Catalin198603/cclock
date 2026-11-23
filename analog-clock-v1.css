@@ -1,13 +1,26 @@
-/* Analog mode for the main cClock hero. */
-#analog-clock{display:none;position:relative;width:min(62vw,440px);aspect-ratio:1;border:7px solid var(--analog-ring-color,rgba(255,255,255,.68));border-radius:50%;margin:0 auto 20px;background:rgba(8,12,20,.32);box-shadow:0 0 0 5px rgba(0,0,0,.2),inset 0 0 30px rgba(0,0,0,.3)}
-#analog-clock .analog-tick{position:absolute;left:calc(50% - 1px);top:5%;height:9%;width:2px;background:var(--orange,#ff6a00);transform-origin:center calc((min(62vw, 440px) - 14px)*.45);border-radius:4px}
-#analog-clock .analog-tick.major{width:4px;left:calc(50% - 2px);height:11%}
-#analog-clock .analog-hand{position:absolute;bottom:50%;left:50%;transform-origin:bottom center;border-radius:8px;will-change:transform}
-#analog-hour{height:26%;width:7px;margin-left:-3.5px;background:#fff}
-#analog-minute{height:36%;width:5px;margin-left:-2.5px;background:#fff}
-#analog-second{height:40%;width:2px;margin-left:-1px;background:var(--orange,#ff6a00)}
-#analog-clock .analog-center{position:absolute;width:14px;height:14px;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--orange,#ff6a00);border:3px solid #fff;border-radius:50%;z-index:3}
+/* cClock Modern Glow analog dial — preview branch cclock-4 */
+#analog-clock{display:none;position:relative;isolation:isolate;width:min(64vw,620px);aspect-ratio:1;flex:none;margin:8px auto 12px;border:7px solid var(--analog-ring-color,#ff6a00);border-radius:50%;background:radial-gradient(circle at 42% 30%,#202b39 0%,#111821 49%,#080c12 83%);box-shadow:0 0 0 3px rgba(255,255,255,.24),0 0 19px 3px var(--analog-ring-glow,rgba(255,106,0,.45)),0 0 55px var(--analog-ring-glow,rgba(255,106,0,.45)),inset 0 0 0 6px rgba(0,0,0,.7),inset 0 0 40px #03060b;transition:border-color .2s,box-shadow .2s}
+#analog-clock:before{content:"";position:absolute;inset:2.8%;border:1px solid rgba(255,255,255,.15);border-radius:50%;pointer-events:none}
+#analog-clock .analog-tick{position:absolute;left:calc(50% - 1px);top:4.8%;width:2px;height:2.1%;background:rgba(232,239,250,.6);border-radius:3px;transform-origin:50% center}
+#analog-clock .analog-tick.major{width:4px;height:4%;background:#f1f4f9;box-shadow:0 0 5px rgba(255,255,255,.2)}
+#analog-clock .analog-tick.quarter{width:6px;height:5.5%;background:var(--analog-ring-color,#ff6a00);box-shadow:0 0 8px var(--analog-ring-glow,rgba(255,106,0,.45))}
+#analog-clock .analog-number{position:absolute;transform:translate(-50%,-50%);font-size:clamp(17px,2.7vw,36px);font-weight:750;font-variant-numeric:tabular-nums;line-height:1;color:#f7f8fb;text-shadow:0 3px 5px #000;pointer-events:none}
+#analog-clock .analog-brand{position:absolute;left:50%;top:29%;transform:translate(-50%,-50%);font-size:clamp(15px,2.2vw,27px);font-weight:850;letter-spacing:-1px;color:#fff;white-space:nowrap}
+#analog-clock .analog-brand span{color:var(--orange,#ff6a00)}
+#analog-clock .analog-hand{position:absolute;bottom:50%;left:50%;transform-origin:bottom center;border-radius:12px;will-change:transform;z-index:3}
+#analog-hour{height:24%;width:clamp(7px,.9vw,12px);margin-left:calc(clamp(7px,.9vw,12px)/-2);background:linear-gradient(90deg,#858e99,#fff 42%,#e5ebf2 67%,#717b87);box-shadow:2px 2px 5px #000}
+#analog-minute{height:35%;width:clamp(5px,.65vw,9px);margin-left:calc(clamp(5px,.65vw,9px)/-2);background:linear-gradient(90deg,#8e98a4,#fff 40%,#d7dfe9 70%,#6c7681);box-shadow:2px 2px 5px #000}
+#analog-second{height:42%;width:2.5px;margin-left:-1.25px;background:var(--analog-ring-color,#ff6a00);box-shadow:0 0 5px var(--analog-ring-glow,rgba(255,106,0,.45));z-index:4}
+#analog-clock .analog-center{position:absolute;width:18px;height:18px;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--analog-ring-color,#ff6a00);border:4px solid #e8edf4;border-radius:50%;box-shadow:0 2px 5px #000;z-index:5}
+#analog-clock .analog-readout{position:absolute;top:72%;left:50%;transform:translate(-50%,-50%);border:1px solid var(--analog-ring-color,#ff6a00);border-radius:30px;background:rgba(3,6,10,.87);padding:5px 14px;font-size:clamp(14px,1.8vw,23px);font-weight:800;color:#fff;font-variant-numeric:tabular-nums;letter-spacing:.5px;box-shadow:0 0 13px var(--analog-ring-glow,rgba(255,106,0,.45));white-space:nowrap;z-index:6}
 body.analog-mode #clock-display{display:none!important}
 body.analog-mode #analog-clock{display:block}
-#analog-mode-toggle[aria-pressed="true"]{border-color:var(--orange,#ff6a00);color:var(--orange,#ff6a00)}#analog-mode-toggle{min-width:42px;font-weight:800}
-@media(max-width:560px){#analog-clock{width:min(76vw,310px);border-width:5px;margin-bottom:15px}#analog-clock .analog-tick{transform-origin:center calc((min(76vw,310px) - 10px)*.45)}#analog-mode-toggle{font-size:11px;padding:9px!important}}
+body.analog-mode .hero{height:auto!important;min-height:780px;overflow:visible}
+body.analog-mode .hero-content{height:auto;min-height:780px;padding:35px 16px 28px;justify-content:center}
+body.analog-mode .hero .eyebrow{margin-bottom:6px}
+body.analog-mode .hero-actions{margin-top:14px}
+#analog-mode-toggle[aria-pressed="true"]{border-color:var(--orange,#ff6a00);color:var(--orange,#ff6a00)}
+#analog-mode-toggle{min-width:42px;font-weight:800}
+@media(max-width:900px){#analog-clock{width:min(78vw,560px)}body.analog-mode .hero,body.analog-mode .hero-content{min-height:0}}
+@media(max-width:560px){#analog-clock{width:min(85vw,370px);border-width:5px;margin:10px auto 12px}#analog-clock .analog-number{font-size:clamp(16px,5vw,24px)}#analog-clock .analog-brand{font-size:clamp(14px,4vw,20px)}#analog-clock .analog-readout{font-size:clamp(13px,3.5vw,17px);padding:4px 10px}body.analog-mode .hero-content{padding:75px 8px 24px}body.analog-mode .hero{min-height:0}#analog-mode-toggle{font-size:11px;padding:9px!important}}
+@media(prefers-reduced-motion:reduce){#analog-clock{transition:none}}
