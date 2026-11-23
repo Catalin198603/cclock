@@ -8,7 +8,25 @@ let lastDate='';
 function updateClock(){
   const now=new Date(); let h=now.getHours(),suffix='';
   if(!is24Hour){suffix=h>=12?' PM':' AM';h=h%12||12}
-  clockDisplay.innerHTML=`${zfill(h)}:${zfill(now.getMinutes())}:<span>${zfill(now.getSeconds())}</span>${suffix}`;
+  // Keep the digit DOM stable: replacing innerHTML every second can cause transient glyph painting artifacts.
+  const timePrefix=`${zfill(h)}:${zfill(now.getMinutes())}:`;
+  const secondText=zfill(now.getSeconds());
+  let secondsNode=clockDisplay.querySelector('[data-clock-seconds]');
+  if(!secondsNode){
+    clockDisplay.replaceChildren(document.createTextNode(timePrefix));
+    secondsNode=document.createElement('span');
+    secondsNode.dataset.clockSeconds='';
+    secondsNode.textContent=secondText;
+    clockDisplay.appendChild(secondsNode);
+    clockDisplay.appendChild(document.createTextNode(suffix));
+  }else{
+    if(clockDisplay.firstChild.nodeValue!==timePrefix)clockDisplay.firstChild.nodeValue=timePrefix;
+    if(secondsNode.textContent!==secondText)secondsNode.textContent=secondText;
+    if(secondsNode.nextSibling?.nodeValue!==suffix){
+      if(secondsNode.nextSibling)secondsNode.nextSibling.nodeValue=suffix;
+      else clockDisplay.appendChild(document.createTextNode(suffix));
+    }
+  }
   const dateKey=now.toDateString();
   if(dateKey!==lastDate){dateDisplay.textContent=dateFormatter.format(now);lastDate=dateKey}
 }
