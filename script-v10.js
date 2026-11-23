@@ -48,16 +48,17 @@ stopAlarm.onclick=()=>{clearTimeout(alarmTimeout);alarmSound.pause();alarmSound.
 function formatHMSms(ms){ms=Math.max(0,ms);const hrs=Math.floor(ms/3600000),mins=Math.floor(ms%3600000/60000),secs=Math.floor(ms%60000/1000),msec=Math.floor(ms%1000);return `${zfill(hrs)}:${zfill(mins)}:${zfill(secs)}.${String(msec).padStart(3,'0')}`}
 function formatMSms(ms){ms=Math.max(0,ms);const totalSec=Math.floor(ms/1000),mins=Math.floor(totalSec/60),secs=totalSec%60,msec=Math.floor(ms%1000);return `${zfill(mins)}:${zfill(secs)}.${String(msec).padStart(3,'0')}`}
 
+const pulseTitle=(id,on)=>document.querySelector('#'+id+' h2')?.classList.toggle('is-running',on);
 let swFrame=0,swTime=0,swStartedAt=0;const swDisplay=$('stopwatch-display'),swStart=$('start-stopwatch'),swReset=$('reset-stopwatch');
 function swTick(){swTime=performance.now()-swStartedAt;swDisplay.textContent=formatHMSms(swTime);swFrame=requestAnimationFrame(swTick)}
-swStart.onclick=()=>{if(swFrame){cancelAnimationFrame(swFrame);swFrame=0;swTime=performance.now()-swStartedAt;swStart.textContent='Continue';swReset.disabled=false}else{swStartedAt=performance.now()-swTime;swFrame=requestAnimationFrame(swTick);swStart.textContent='Pause';swReset.disabled=true}};
-swReset.onclick=()=>{if(swFrame)cancelAnimationFrame(swFrame);swFrame=0;swTime=0;swDisplay.textContent='00:00:00.000';swStart.textContent='Start';swReset.disabled=true};
+swStart.onclick=()=>{if(swFrame){cancelAnimationFrame(swFrame);swFrame=0;swTime=performance.now()-swStartedAt;swStart.textContent='Continue';pulseTitle('stopwatch',false);swReset.disabled=false}else{swStartedAt=performance.now()-swTime;swFrame=requestAnimationFrame(swTick);swStart.textContent='Pause';pulseTitle('stopwatch',true);swReset.disabled=true}};
+swReset.onclick=()=>{if(swFrame)cancelAnimationFrame(swFrame);swFrame=0;swTime=0;swDisplay.textContent='00:00:00.000';swStart.textContent='Start';pulseTitle('stopwatch',false);swReset.disabled=true};
 
 let timerFrame=0,timerRemainingMs=0,timerEnd=0;const td=$('timer-display'),ts=$('start-timer'),tr=$('reset-timer'),th=$('timer-h'),tm=$('timer-m'),tsec=$('timer-s');
 function showTimer(){td.textContent=formatHMSms(timerRemainingMs)}
-function tickTimer(){timerRemainingMs=Math.max(0,timerEnd-performance.now());showTimer();if(timerRemainingMs<=0){timerFrame=0;ts.textContent='Start';if(soundOn)alarmSound.play().catch(()=>{});th.disabled=tm.disabled=tsec.disabled=false;return}timerFrame=requestAnimationFrame(tickTimer)}
-ts.onclick=()=>{if(timerFrame){timerRemainingMs=Math.max(0,timerEnd-performance.now());cancelAnimationFrame(timerFrame);timerFrame=0;ts.textContent='Continue';return}if(timerRemainingMs<=0)timerRemainingMs=((+th.value||0)*3600+(+tm.value||0)*60+(+tsec.value||0))*1000;if(timerRemainingMs>0){timerEnd=performance.now()+timerRemainingMs;showTimer();timerFrame=requestAnimationFrame(tickTimer);ts.textContent='Pause';tr.disabled=false;th.disabled=tm.disabled=tsec.disabled=true}};
-tr.onclick=()=>{if(timerFrame)cancelAnimationFrame(timerFrame);timerFrame=0;timerRemainingMs=0;td.textContent='00:00:00.000';ts.textContent='Start';tr.disabled=true;th.disabled=tm.disabled=tsec.disabled=false};
+function tickTimer(){timerRemainingMs=Math.max(0,timerEnd-performance.now());showTimer();if(timerRemainingMs<=0){timerFrame=0;ts.textContent='Start';pulseTitle('timer',false);if(soundOn)alarmSound.play().catch(()=>{});th.disabled=tm.disabled=tsec.disabled=false;return}timerFrame=requestAnimationFrame(tickTimer)}
+ts.onclick=()=>{if(timerFrame){timerRemainingMs=Math.max(0,timerEnd-performance.now());cancelAnimationFrame(timerFrame);timerFrame=0;ts.textContent='Continue';pulseTitle('timer',false);return}if(timerRemainingMs<=0)timerRemainingMs=((+th.value||0)*3600+(+tm.value||0)*60+(+tsec.value||0))*1000;if(timerRemainingMs>0){timerEnd=performance.now()+timerRemainingMs;showTimer();timerFrame=requestAnimationFrame(tickTimer);ts.textContent='Pause';pulseTitle('timer',true);tr.disabled=false;th.disabled=tm.disabled=tsec.disabled=true}};
+tr.onclick=()=>{if(timerFrame)cancelAnimationFrame(timerFrame);timerFrame=0;timerRemainingMs=0;td.textContent='00:00:00.000';ts.textContent='Start';pulseTitle('timer',false);tr.disabled=true;th.disabled=tm.disabled=tsec.disabled=false};
 document.querySelectorAll('[data-minutes]').forEach(b=>b.onclick=()=>{if(timerFrame)cancelAnimationFrame(timerFrame);timerFrame=0;timerRemainingMs=+b.dataset.minutes*60000;th.value=Math.floor(timerRemainingMs/3600000);tm.value=Math.floor(timerRemainingMs%3600000/60000);tsec.value=0;showTimer();ts.textContent='Start';th.disabled=tm.disabled=tsec.disabled=false;tr.disabled=false});
 
 const worldEls=[...document.querySelectorAll('.world-time')];
@@ -67,10 +68,10 @@ if('requestIdleCallback'in window)requestIdleCallback(startWorld,{timeout:1800})
 
 let pomoFrame=0,pomoRemainingMs=25*60000,pomoSelected=25,pomoEnd=0;const pd=$('pomodoro-display'),ps=$('pomodoro-start');
 function showPomo(){pd.textContent=formatMSms(pomoRemainingMs)}
-function tickPomo(){pomoRemainingMs=Math.max(0,pomoEnd-performance.now());showPomo();if(pomoRemainingMs<=0){pomoFrame=0;ps.textContent='Start';if(soundOn)alarmSound.play().catch(()=>{});return}pomoFrame=requestAnimationFrame(tickPomo)}
-document.querySelectorAll('[data-pomodoro]').forEach(b=>b.onclick=()=>{if(pomoFrame)cancelAnimationFrame(pomoFrame);pomoFrame=0;pomoSelected=+b.dataset.pomodoro;pomoRemainingMs=pomoSelected*60000;ps.textContent='Start';showPomo()});
-ps.onclick=()=>{if(pomoFrame){pomoRemainingMs=Math.max(0,pomoEnd-performance.now());cancelAnimationFrame(pomoFrame);pomoFrame=0;ps.textContent='Continue'}else if(pomoRemainingMs>0){pomoEnd=performance.now()+pomoRemainingMs;pomoFrame=requestAnimationFrame(tickPomo);ps.textContent='Pause'}};
-$('pomodoro-reset').onclick=()=>{if(pomoFrame)cancelAnimationFrame(pomoFrame);pomoFrame=0;pomoRemainingMs=pomoSelected*60000;ps.textContent='Start';showPomo()};
+function tickPomo(){pomoRemainingMs=Math.max(0,pomoEnd-performance.now());showPomo();if(pomoRemainingMs<=0){pomoFrame=0;ps.textContent='Start';pulseTitle('pomodoro',false);if(soundOn)alarmSound.play().catch(()=>{});return}pomoFrame=requestAnimationFrame(tickPomo)}
+document.querySelectorAll('[data-pomodoro]').forEach(b=>b.onclick=()=>{if(pomoFrame)cancelAnimationFrame(pomoFrame);pomoFrame=0;pomoSelected=+b.dataset.pomodoro;pomoRemainingMs=pomoSelected*60000;ps.textContent='Start';pulseTitle('pomodoro',false);showPomo()});
+ps.onclick=()=>{if(pomoFrame){pomoRemainingMs=Math.max(0,pomoEnd-performance.now());cancelAnimationFrame(pomoFrame);pomoFrame=0;ps.textContent='Continue';pulseTitle('pomodoro',false)}else if(pomoRemainingMs>0){pomoEnd=performance.now()+pomoRemainingMs;pomoFrame=requestAnimationFrame(tickPomo);ps.textContent='Pause';pulseTitle('pomodoro',true)}};
+$('pomodoro-reset').onclick=()=>{if(pomoFrame)cancelAnimationFrame(pomoFrame);pomoFrame=0;pomoRemainingMs=pomoSelected*60000;ps.textContent='Start';pulseTitle('pomodoro',false);showPomo()};
 
 const homeAlarmPicker=$('home-alarm-picker');
 if(homeAlarmPicker&&alarmInput){homeAlarmPicker.addEventListener('click',()=>{try{if(typeof alarmInput.showPicker==='function')alarmInput.showPicker();else{alarmInput.focus();alarmInput.click()}}catch(e){alarmInput.focus();alarmInput.click()}})}
