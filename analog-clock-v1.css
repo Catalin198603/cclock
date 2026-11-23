@@ -24,3 +24,23 @@ body.analog-mode .hero-actions{margin-top:14px}
 @media(max-width:900px){#analog-clock{width:min(78vw,560px)}body.analog-mode .hero,body.analog-mode .hero-content{min-height:0}}
 @media(max-width:560px){#analog-clock{width:min(85vw,370px);border-width:5px;margin:10px auto 12px}#analog-clock .analog-number{font-size:clamp(16px,5vw,24px)}#analog-clock .analog-brand{font-size:clamp(14px,4vw,20px)}#analog-clock .analog-readout{font-size:clamp(13px,3.5vw,17px);padding:4px 10px}body.analog-mode .hero-content{padding:75px 8px 24px}body.analog-mode .hero{min-height:0}#analog-mode-toggle{font-size:11px;padding:9px!important}}
 @media(prefers-reduced-motion:reduce){#analog-clock{transition:none}}
+
+/* Analog-only layout: timezone above the date; sound/date/fullscreen share one row.
+   Let the hero grow with its content so the tool cards never cover the controls. */
+body.analog-mode .hero{height:auto!important;min-height:0!important;overflow:hidden}
+body.analog-mode .hero-content{display:grid!important;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);grid-template-rows:auto auto auto auto;align-items:center;justify-items:center;column-gap:12px;row-gap:12px;height:auto!important;min-height:0!important;padding:34px 26px 48px!important}
+body.analog-mode .hero .eyebrow{grid-column:1/-1;grid-row:1;margin:0!important}
+body.analog-mode #analog-clock{grid-column:1/-1;grid-row:2;margin:8px auto 8px}
+body.analog-mode .hero .timezone-display{grid-column:1/-1;grid-row:3;margin:0!important;font-size:15px}
+body.analog-mode .hero .date-display{grid-column:2;grid-row:4;margin:0!important;text-align:center;white-space:nowrap;font-size:clamp(17px,2vw,27px)}
+body.analog-mode .hero .hero-actions{display:contents!important}
+body.analog-mode .hero #toggle-sound{grid-column:1;grid-row:4;justify-self:end}
+body.analog-mode .hero #hero-fullscreen{grid-column:3;grid-row:4;justify-self:start}
+body.analog-mode .hero #toggle-sound,body.analog-mode .hero #hero-fullscreen{position:relative;z-index:2;white-space:nowrap}
+@media(max-width:760px){
+ body.analog-mode .hero-content{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto auto auto auto auto;gap:12px;padding:75px 12px 30px!important}
+ body.analog-mode .hero .date-display{grid-column:1/-1;grid-row:4;white-space:normal}
+ body.analog-mode .hero #toggle-sound{grid-column:1;grid-row:5;justify-self:end}
+ body.analog-mode .hero #hero-fullscreen{grid-column:2;grid-row:5;justify-self:start}
+ body.analog-mode .hero #toggle-sound,body.analog-mode .hero #hero-fullscreen{padding:11px 14px;font-size:13px}
+}
