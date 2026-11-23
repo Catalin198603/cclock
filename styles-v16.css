@@ -487,3 +487,9 @@ body.light .seo-link-grid a:hover{background:#fff8f2}
   }
   .eyebrow{margin-top:28px}
 }
+
+@media (max-width: 560px) {
+  .top-actions .icon-btn:first-child {
+    display: inline-flex !important;
+  }
+}
