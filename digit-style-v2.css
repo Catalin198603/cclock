@@ -71,3 +71,9 @@ body.digital-digits #d{
     font-size:5.8vw!important;
   }
 }
+
+/* Chrome/DSEG7: suppress stray baseline strokes below the digital glyphs.
+   Clip only the bottom 5px of the line box; no change to digit size or layout. */
+body.digital-digits .hero .clock-display{
+  clip-path:inset(0 0 5px 0);
+}
