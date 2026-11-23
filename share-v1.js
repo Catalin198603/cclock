@@ -17,7 +17,7 @@
       // Always share the published page URL, even when testing on a preview host.
       const canonical=document.querySelector('link[rel="canonical"]');
       let url;
-      try{const candidate=new URL(canonical?.href||location.href);url=candidate.origin==='https://cclock.eu'?candidate.href:new URL(location.pathname.replace(/^\\/cclock\\//,'/'), 'https://cclock.eu').href}catch(e){url='https://cclock.eu/'}
+      try{const candidate=new URL(canonical?.href||location.href);url=candidate.origin==='https://cclock.eu'?candidate.href:'https://cclock.eu/'+location.pathname.split('/').pop()}catch(e){url='https://cclock.eu/'}
       const data={title:document.title,text:'Check out this cClock tool',url};
       if(navigator.share){try{await navigator.share(data);return}catch(e){if(e.name==='AbortError')return}}
       try{await navigator.clipboard.writeText(url);notice('Link copied! Share it anywhere.');return}catch(e){}
