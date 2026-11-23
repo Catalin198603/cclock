@@ -5,13 +5,13 @@
 <title>World Clock - Current Time in Major Cities | cClock</title>\n<meta name="description" content="Check the current local time in major cities around the world. Compare time zones for New York, London, Berlin, Tokyo, Sydney and many more cities.">\n<meta name="robots" content="index, follow"><link rel="canonical" href="https://cclock.eu/world-clock.html"><meta property="og:type" content="website"><meta property="og:site_name" content="cClock"><meta property="og:title" content="World Clock - Current Time in Major Cities | cClock"><meta property="og:description" content="Live local time and time zones for major cities around the world."><meta property="og:url" content="https://cclock.eu/world-clock.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"World Clock - Current Time in Major Cities","url":"https://cclock.eu/world-clock.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","browserRequirements":"Requires a modern web browser","isAccessibleForFree":true,"description":"Check the current local time in major cities around the world. Compare time zones for New York, London, Berlin, Tokyo, Sydney and many more cities."},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"cClock","item":"https://cclock.eu/"},{"@type":"ListItem","position":2,"name":"World Clock - Current Time in Major Cities","item":"https://cclock.eu/world-clock.html"}]}]}</script><link rel="stylesheet" href="styles.css?v=8">
 <style>
-.world-page{max-width:1180px;margin:0 auto;padding:42px 20px 70px}.world-page-head{text-align:center;margin-bottom:30px}.world-page-head h1{font-size:clamp(2.2rem,5vw,4.4rem);margin:8px 0}.world-page-head p{color:var(--muted);max-width:720px;margin:0 auto}.city-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.city-clock{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center}.city-clock strong{display:block;font-size:1rem;margin-bottom:8px}.city-clock time{display:block;font-size:1.7rem;font-weight:800}.city-clock small{display:block;color:var(--muted);margin-top:5px}.back-home{display:inline-block;margin-top:28px;color:var(--orange);font-weight:800;text-decoration:none}@media(max-width:900px){.city-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.city-grid{grid-template-columns:1fr}}
+.world-page{max-width:1180px;margin:0 auto;padding:42px 20px 70px}.world-page-head{text-align:center;margin-bottom:30px}.world-page-head h1{font-size:clamp(2.2rem,5vw,4.4rem);margin:8px 0}.world-page-head p{color:var(--muted);max-width:720px;margin:0 auto}.city-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.city-clock{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center}.city-clock strong{display:block;font-size:1rem;margin-bottom:8px}.city-clock time{display:block;font-size:1.7rem;font-weight:800}.city-clock small{display:block;color:var(--muted);margin-top:5px}.city-add{display:flex;align-items:center;justify-content:center;min-height:148px;border:2px dashed var(--line);border-radius:16px;background:transparent;color:var(--orange);font-size:1rem;font-weight:800;cursor:pointer}.city-add:hover{border-color:var(--orange);background:rgba(255,106,0,.06)}.city-clock{position:relative}.city-remove{position:absolute;right:9px;top:7px;background:transparent;border:0;color:var(--muted);font-size:22px;cursor:pointer;padding:3px 7px}.city-remove:hover{color:var(--orange)}.city-clock strong{padding:0 16px}.city-modal[hidden]{display:none}.city-modal{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center;padding:18px}.city-dialog{width:min(100%,440px);background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 24px 65px #0008}.city-dialog h2{margin:0 0 16px}.city-dialog label{display:block;font-weight:700;margin:14px 0 6px}.city-dialog input,.city-dialog select{width:100%;padding:13px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--text);font:inherit}.city-dialog-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}.city-dialog-actions button{padding:11px 19px;border-radius:9px;border:1px solid var(--line);cursor:pointer;font-weight:700}.city-dialog-actions .add-confirm{background:var(--orange);color:#fff;border-color:var(--orange)}.back-home{display:inline-block;margin-top:28px;color:var(--orange);font-weight:800;text-decoration:none}@media(max-width:900px){.city-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.city-grid{grid-template-columns:1fr}}
 body.light .city-clock{background:#fff;color:#101318;border-color:#cbd3dc}
 </style>
 <link rel="stylesheet" href="consent-v1.css"><link rel="stylesheet" href="digit-style-v2.css"></head>
 <body>
 <header class="topbar"><a class="brand" href="index.html"><span>c</span>Clock</a><nav class="main-nav"><a class="nav-link" href="index.html">Clock</a><span class="nav-link active">World Clock</span></nav><div class="top-actions"><button id="theme-toggle" class="icon-btn">☾</button><button id="toggle-format" class="compact-btn">24H</button><button id="digit-style-toggle" class="compact-btn" type="button" aria-pressed="false" title="Use digital digits" aria-label="Use digital digit style">DIGI</button></div></header>
-<main class="world-page"><div class="world-page-head"><p class="section-kicker">TIME AROUND THE WORLD</p><h1>World Clock</h1><p>Live local time in major cities around the world.</p></div><div class="city-grid" id="city-grid"></div><a class="back-home" href="index.html">← Back to cClock</a></main>
+<main class="world-page"><div class="world-page-head"><p class="section-kicker">TIME AROUND THE WORLD</p><h1>World Clock</h1><p>Live local time in major cities around the world.</p></div><div class="city-grid" id="city-grid"></div><div class="city-modal" id="city-modal" hidden><div class="city-dialog" role="dialog" aria-modal="true" aria-labelledby="city-modal-title"><h2 id="city-modal-title">Add a City</h2><label for="city-search">Search for a city</label><input id="city-search" type="search" placeholder="Type city name..." autocomplete="off"><label for="city-choice">City / Time zone</label><select id="city-choice" size="7" aria-label="Choose a city"></select><div class="city-dialog-actions"><button id="city-cancel" type="button">Cancel</button><button id="city-confirm" class="add-confirm" type="button">Add City</button></div></div></div><a class="back-home" href="index.html">← Back to cClock</a></main>
 <script>
 const cities=[
 ['New York','America/New_York'],['Los Angeles','America/Los_Angeles'],['Chicago','America/Chicago'],['Toronto','America/Toronto'],['Vancouver','America/Vancouver'],['Mexico City','America/Mexico_City'],['São Paulo','America/Sao_Paulo'],['Buenos Aires','America/Argentina/Buenos_Aires'],
@@ -19,8 +19,53 @@ const cities=[
 ['Cairo','Africa/Cairo'],['Johannesburg','Africa/Johannesburg'],['Nairobi','Africa/Nairobi'],['Dubai','Asia/Dubai'],['Riyadh','Asia/Riyadh'],['Jerusalem','Asia/Jerusalem'],['Delhi','Asia/Kolkata'],['Bangkok','Asia/Bangkok'],['Singapore','Asia/Singapore'],['Hong Kong','Asia/Hong_Kong'],['Beijing','Asia/Shanghai'],['Seoul','Asia/Seoul'],['Tokyo','Asia/Tokyo'],
 ['Jakarta','Asia/Jakarta'],['Manila','Asia/Manila'],['Kuala Lumpur','Asia/Kuala_Lumpur'],['Taipei','Asia/Taipei'],['Ho Chi Minh City','Asia/Ho_Chi_Minh'],['Sydney','Australia/Sydney'],['Melbourne','Australia/Melbourne'],['Perth','Australia/Perth'],['Brisbane','Australia/Brisbane'],['Adelaide','Australia/Adelaide'],['Auckland','Pacific/Auckland'],['Honolulu','Pacific/Honolulu'],['Fiji','Pacific/Fiji']
 ];
-let is24=true;const grid=document.getElementById('city-grid');cities.forEach(([city,tz])=>{const d=document.createElement('div');d.className='city-clock';d.dataset.tz=tz;d.innerHTML='<strong>'+city+'</strong><time>--:--:--</time><small>'+tz.replaceAll('_',' ')+'</small>';grid.appendChild(d)});
-function update(){const now=new Date();document.querySelectorAll('.city-clock').forEach(el=>el.querySelector('time').textContent=now.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:!is24,timeZone:el.dataset.tz}))}update();setInterval(update,1000);
-
+const extraCities=[
+['San Francisco','America/Los_Angeles'],['Seattle','America/Los_Angeles'],['Washington DC','America/New_York'],['Boston','America/New_York'],['Miami','America/New_York'],['Dallas','America/Chicago'],['Houston','America/Chicago'],['Denver','America/Denver'],['Phoenix','America/Phoenix'],['Las Vegas','America/Los_Angeles'],['Montreal','America/Toronto'],['Calgary','America/Edmonton'],['Winnipeg','America/Winnipeg'],['Bogotá','America/Bogota'],['Lima','America/Lima'],['Santiago','America/Santiago'],['Rio de Janeiro','America/Sao_Paulo'],['Brasília','America/Sao_Paulo'],
+['Edinburgh','Europe/London'],['Brussels','Europe/Brussels'],['Prague','Europe/Prague'],['Warsaw','Europe/Warsaw'],['Budapest','Europe/Budapest'],['Copenhagen','Europe/Copenhagen'],['Oslo','Europe/Oslo'],['Helsinki','Europe/Helsinki'],['Kyiv','Europe/Kyiv'],['Sofia','Europe/Sofia'],['Belgrade','Europe/Belgrade'],['Zagreb','Europe/Zagreb'],['Munich','Europe/Berlin'],['Frankfurt','Europe/Berlin'],['Oradea','Europe/Bucharest'],['Cluj-Napoca','Europe/Bucharest'],['Moscow','Europe/Moscow'],
+['Casablanca','Africa/Casablanca'],['Lagos','Africa/Lagos'],['Accra','Africa/Accra'],['Addis Ababa','Africa/Addis_Ababa'],['Cape Town','Africa/Johannesburg'],['Doha','Asia/Qatar'],['Abu Dhabi','Asia/Dubai'],['Tehran','Asia/Tehran'],['Karachi','Asia/Karachi'],['Mumbai','Asia/Kolkata'],['Kolkata','Asia/Kolkata'],['Dhaka','Asia/Dhaka'],['Kathmandu','Asia/Kathmandu'],['Hanoi','Asia/Bangkok'],['Phnom Penh','Asia/Phnom_Penh'],['Yangon','Asia/Yangon'],['Shanghai','Asia/Shanghai'],['Shenzhen','Asia/Shanghai'],['Osaka','Asia/Tokyo'],['Busan','Asia/Seoul'],['Almaty','Asia/Almaty'],['Tashkent','Asia/Tashkent'],
+['Canberra','Australia/Sydney'],['Darwin','Australia/Darwin'],['Hobart','Australia/Hobart'],['Wellington','Pacific/Auckland'],['Christchurch','Pacific/Auckland'],['Suva','Pacific/Fiji'],['Apia','Pacific/Apia'],['Port Moresby','Pacific/Port_Moresby']
+];
+const catalog=[...cities,...extraCities].sort((a,b)=>a[0].localeCompare(b[0]));
+const storageKey='cclock-world-added-cities-v1';
+let added=[];try{const saved=JSON.parse(localStorage.getItem(storageKey)||'[]');if(Array.isArray(saved))added=saved.filter(x=>Array.isArray(x)&&x.length===2&&catalog.some(c=>c[0]===x[0]&&c[1]===x[1])).slice(0,100)}catch(e){}
+let is24=true;
+const grid=document.getElementById('city-grid'),modal=document.getElementById('city-modal'),search=document.getElementById('city-search'),choice=document.getElementById('city-choice');
+function saveCities(){try{localStorage.setItem(storageKey,JSON.stringify(added))}catch(e){}}
+function renderCities(){
+ grid.replaceChildren();
+ [...cities,...added].forEach(([city,tz],index)=>{
+  const d=document.createElement('div');d.className='city-clock';d.dataset.tz=tz;
+  const name=document.createElement('strong');name.textContent=city;
+  const time=document.createElement('time');time.textContent='--:--:--';
+  const zone=document.createElement('small');zone.textContent=tz.replaceAll('_',' ');
+  d.append(name,time,zone);
+  if(index>=cities.length){const remove=document.createElement('button');remove.className='city-remove';remove.type='button';remove.textContent='×';remove.setAttribute('aria-label','Remove '+city);remove.onclick=()=>{added.splice(index-cities.length,1);saveCities();renderCities()};d.append(remove)}
+  grid.append(d);
+ });
+ const add=document.createElement('button');add.type='button';add.className='city-add';add.textContent='+ Add City';add.onclick=openCityModal;grid.append(add);update();
+}
+function update(){const now=new Date();document.querySelectorAll('.city-clock').forEach(el=>{try{el.querySelector('time').textContent=now.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:!is24,timeZone:el.dataset.tz})}catch(e){el.querySelector('time').textContent='--:--:--'}})}
+function filterCities(){
+ const q=search.value.trim().toLocaleLowerCase();choice.replaceChildren();
+ catalog.filter(([name,tz])=>(name+' '+tz.replaceAll('_',' ')).toLocaleLowerCase().includes(q)&&!added.some(x=>x[0]===name&&x[1]===tz)).slice(0,100).forEach(([name,tz])=>{const option=document.createElement('option');option.value=name+'|'+tz;option.textContent=name+' — '+tz.replaceAll('_',' ');choice.append(option)});
+ if(choice.options.length)choice.selectedIndex=0;
+ document.getElementById('city-confirm').disabled=!choice.options.length;
+}
+function openCityModal(){search.value='';filterCities();modal.hidden=false;search.focus()}
+function closeCityModal(){modal.hidden=true}
+document.getElementById('city-cancel').onclick=closeCityModal;
+modal.addEventListener('click',e=>{if(e.target===modal)closeCityModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)closeCityModal()});
+search.addEventListener('input',filterCities);
+search.addEventListener('keydown',e=>{if(e.key==='Enter'&&choice.options.length){e.preventDefault();document.getElementById('city-confirm').click()}});
+choice.addEventListener('dblclick',()=>document.getElementById('city-confirm').click());
+document.getElementById('city-confirm').onclick=()=>{
+ if(!choice.value)return;
+ const [name,tz]=choice.value.split('|');
+ if(!catalog.some(x=>x[0]===name&&x[1]===tz)||added.some(x=>x[0]===name&&x[1]===tz))return;
+ added.push([name,tz]);saveCities();closeCityModal();renderCities();
+};
 document.getElementById('toggle-format').onclick=function(){is24=!is24;this.textContent=is24?'24H':'12H';update()};
+renderCities();setInterval(update,1000);
+
 </script><script src="consent-v1.js" defer></script><script src="digit-style-v1.js" defer></script><script src="theme-prefs-v1.js" defer></script></body></html>
