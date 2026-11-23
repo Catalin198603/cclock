@@ -1,5 +1,5 @@
 /* Analog mode for the main cClock hero. */
-#analog-clock{display:none;position:relative;width:min(62vw,440px);aspect-ratio:1;border:7px solid rgba(255,255,255,.68);border-radius:50%;margin:0 auto 20px;background:rgba(8,12,20,.32);box-shadow:0 0 0 5px rgba(0,0,0,.2),inset 0 0 30px rgba(0,0,0,.3)}
+#analog-clock{display:none;position:relative;width:min(62vw,440px);aspect-ratio:1;border:7px solid var(--analog-ring-color,rgba(255,255,255,.68));border-radius:50%;margin:0 auto 20px;background:rgba(8,12,20,.32);box-shadow:0 0 0 5px rgba(0,0,0,.2),inset 0 0 30px rgba(0,0,0,.3)}
 #analog-clock .analog-tick{position:absolute;left:calc(50% - 1px);top:5%;height:9%;width:2px;background:var(--orange,#ff6a00);transform-origin:center calc((min(62vw, 440px) - 14px)*.45);border-radius:4px}
 #analog-clock .analog-tick.major{width:4px;left:calc(50% - 2px);height:11%}
 #analog-clock .analog-hand{position:absolute;bottom:50%;left:50%;transform-origin:bottom center;border-radius:8px;will-change:transform}
