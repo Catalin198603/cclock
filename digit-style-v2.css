@@ -43,3 +43,23 @@ body.digital-digits #d{
 @media(max-width:560px){
   #digit-style-toggle{min-width:48px;padding-left:8px;padding-right:8px}
 }
+
+
+/* Mobile: keep long timer/stopwatch values fully visible and centered */
+@media(max-width:560px){
+  body.digital-digits .panel-display,
+  body.digital-digits #timer-display,
+  body.digital-digits #stopwatch-display,
+  body.digital-digits #d{
+    display:block;
+    width:100%;
+    max-width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    white-space:nowrap;
+    font-size:clamp(32px,9.2vw,42px)!important;
+    letter-spacing:0!important;
+    line-height:1.08;
+  }
+}
