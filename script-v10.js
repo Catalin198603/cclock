@@ -16,17 +16,17 @@ function updateClock(){
     clockDisplay.replaceChildren(document.createTextNode(timePrefix));
     secondsNode=document.createElement('span');
     secondsNode.dataset.clockSeconds='';
-    secondsNode.textContent=secondText;
     clockDisplay.appendChild(secondsNode);
-    clockDisplay.appendChild(document.createTextNode(suffix));
-  }else{
-    if(clockDisplay.firstChild.nodeValue!==timePrefix)clockDisplay.firstChild.nodeValue=timePrefix;
-    if(secondsNode.textContent!==secondText)secondsNode.textContent=secondText;
-    if(secondsNode.nextSibling?.nodeValue!==suffix){
-      if(secondsNode.nextSibling)secondsNode.nextSibling.nodeValue=suffix;
-      else clockDisplay.appendChild(document.createTextNode(suffix));
-    }
+    const period=document.createElement('span');
+    period.className='clock-period';
+    clockDisplay.appendChild(period);
   }
+  if(clockDisplay.firstChild.nodeValue!==timePrefix)clockDisplay.firstChild.nodeValue=timePrefix;
+  if(secondsNode.textContent!==secondText)secondsNode.textContent=secondText;
+  const period=clockDisplay.querySelector('.clock-period');
+  if(period.textContent!==suffix.trim())period.textContent=suffix.trim();
+  period.hidden=is24Hour;
+  clockDisplay.classList.toggle('clock-12h',!is24Hour);
   const dateKey=now.toDateString();
   if(dateKey!==lastDate){dateDisplay.textContent=dateFormatter.format(now);lastDate=dateKey}
 }

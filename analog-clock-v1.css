@@ -10,7 +10,7 @@
 #analog-clock .analog-hand{position:absolute;bottom:50%;left:50%;transform-origin:bottom center;border-radius:12px;will-change:transform;z-index:3}
 #analog-hour{height:24%;width:clamp(7px,.9vw,12px);margin-left:calc(clamp(7px,.9vw,12px)/-2);background:linear-gradient(90deg,#858e99,#fff 42%,#e5ebf2 67%,#717b87);box-shadow:2px 2px 5px #000}
 #analog-minute{height:35%;width:clamp(5px,.65vw,9px);margin-left:calc(clamp(5px,.65vw,9px)/-2);background:linear-gradient(90deg,#8e98a4,#fff 40%,#d7dfe9 70%,#6c7681);box-shadow:2px 2px 5px #000}
-#analog-second{height:42%;width:2.5px;margin-left:-1.25px;background:var(--analog-ring-color,#ff6a00);box-shadow:0 0 5px var(--analog-ring-glow,rgba(255,106,0,.45));z-index:4}
+#analog-second{height:40%;width:2.5px;margin-left:-1.25px;background:var(--analog-ring-color,#ff6a00);box-shadow:0 0 5px var(--analog-ring-glow,rgba(255,106,0,.45));z-index:4}
 #analog-clock .analog-center{position:absolute;width:18px;height:18px;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--analog-ring-color,#ff6a00);border:4px solid #e8edf4;border-radius:50%;box-shadow:0 2px 5px #000;z-index:5}
 #analog-clock .analog-readout{position:absolute;top:72%;left:50%;transform:translate(-50%,-50%);border:1px solid var(--analog-ring-color,#ff6a00);border-radius:30px;background:rgba(3,6,10,.87);padding:5px 14px;font-size:clamp(14px,1.8vw,23px);font-weight:800;color:#fff;font-variant-numeric:tabular-nums;letter-spacing:.5px;box-shadow:0 0 13px var(--analog-ring-glow,rgba(255,106,0,.45));white-space:nowrap;z-index:6}
 body.analog-mode #clock-display{display:none!important}
