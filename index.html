@@ -39,6 +39,14 @@
 @media(max-width:560px){
   #clock-display.clock-12h{font-size:min(calc(clamp(46px,12vw,64px) * var(--clock-scale,1)), 15.5cqw)}
 }
+/* Separate the digital clock tagline from the digits without changing clock size. */
+body:not(.analog-mode) #clock .hero-content > .eyebrow {
+  position: relative;
+  top: -24px;
+}
+@media (max-width: 560px) {
+  body:not(.analog-mode) #clock .hero-content > .eyebrow { top: -12px; }
+}
 </style>
 </head>
 <body>
