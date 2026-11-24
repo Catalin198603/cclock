@@ -18,9 +18,10 @@
 @keyframes cclock-title-pulse{0%,100%{opacity:1;text-shadow:0 0 0 transparent}50%{opacity:.52;text-shadow:0 0 24px rgba(255,106,0,.95),0 0 42px rgba(255,106,0,.55)}}
 #timer h2.is-running,#stopwatch h2.is-running,#pomodoro h2.is-running{animation:cclock-title-pulse 1.6s ease-in-out infinite}
 @media(prefers-reduced-motion:reduce){#timer h2.is-running,#stopwatch h2.is-running,#pomodoro h2.is-running{animation:none;text-shadow:0 0 9px rgba(255,106,0,.45)}}
-/* Keep the 12-hour display inside the clock panel, including at maximum zoom. */
+/* Match the 24-hour zoom range, reserving room for AM/PM. */
+.hero-content{container-type:inline-size}
 #clock-display.clock-12h{
-  font-size:min(calc(clamp(52px,10vw,108px) * var(--clock-scale,1)), 9vw, 100px);
+  font-size:min(calc(clamp(52px,10vw,108px) * var(--clock-scale,1)), 13.2cqw);
   max-width:100%;
 }
 #clock-display .clock-period{
@@ -33,10 +34,10 @@
 }
 #clock-display .clock-period[hidden]{display:none!important}
 @media(min-width:1100px){
-  #clock-display.clock-12h{font-size:min(calc(clamp(92px,11vw,165px) * var(--clock-scale,1)), 145px, 9vw)}
+  #clock-display.clock-12h{font-size:min(calc(clamp(92px,11vw,165px) * var(--clock-scale,1)), 13.2cqw)}
 }
 @media(max-width:560px){
-  #clock-display.clock-12h{font-size:min(calc(clamp(46px,12vw,64px) * var(--clock-scale,1)), 9.3vw)}
+  #clock-display.clock-12h{font-size:min(calc(clamp(46px,12vw,64px) * var(--clock-scale,1)), 13.2cqw)}
 }
 </style>
 </head>
