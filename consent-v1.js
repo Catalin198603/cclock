@@ -18,6 +18,7 @@ function defaultConsent(){
 defaultConsent();
 
 function loadAnalytics(){
+  if (!['cclock.eu', 'www.cclock.eu'].includes(window.location.hostname)) return;
   if(gaLoaded)return;
   gaLoaded=true;
   gtag('consent','update',{
