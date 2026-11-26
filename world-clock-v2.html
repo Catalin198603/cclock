@@ -25,4 +25,4 @@ let is24=true;const grid=document.getElementById('city-grid');cities.forEach(([c
 function update(){const now=new Date();document.querySelectorAll('.city-clock').forEach(el=>el.querySelector('time').textContent=now.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:!is24,timeZone:el.dataset.tz}))}update();setInterval(update,1000);
 document.getElementById('theme-toggle').onclick=function(){document.body.classList.toggle('light');this.textContent=document.body.classList.contains('light')?'☀':'☾'};
 document.getElementById('toggle-format').onclick=function(){is24=!is24;this.textContent=is24?'24H':'12H';update()};
-</script></body></html>
+</script><footer style="text-align:center;padding:24px 16px"><p>© 2026 cClock. All rights reserved.</p><nav aria-label="Legal and contact" style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px"><a style="color:inherit" href="contact.html">Contact</a><a style="color:inherit" href="terms.html">Terms of Use</a><a style="color:inherit" href="privacy.html">Privacy Policy</a></nav></footer></body></html>
