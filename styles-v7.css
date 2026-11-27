@@ -85,3 +85,16 @@ body.light .hero{
 @media(max-width:560px){
   .hero{background-position:center center}
 }
+
+/* Keep Day/Night visible on mobile */
+@media (max-width: 900px) {
+  .top-actions #theme-toggle {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .topbar { gap: 8px; }
+  .top-actions { gap: 5px; }
+  .top-actions button { padding: 8px 9px; }
+}
