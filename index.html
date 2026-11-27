@@ -11,7 +11,775 @@
   <meta property="og:type" content="website"><meta property="og:site_name" content="cClock"><meta property="og:title" content="Free Online Clock, Timer, Alarm & Stopwatch | cClock"><meta property="og:description" content="Free online clock, timer, stopwatch, alarms, Pomodoro timer and world clock."><meta property="og:url" content="https://cclock.eu/">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://cclock.eu/#website","url":"https://cclock.eu/","name":"cClock","description":"Use cClock for free online time tools: live clock, countdown timer, stopwatch, multiple alarms, Pomodoro timer and world clock. Fast and easy to use.","inLanguage":"en"},{"@type":"WebApplication","@id":"https://cclock.eu/#app","name":"cClock","url":"https://cclock.eu/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","browserRequirements":"Requires a modern web browser","isAccessibleForFree":true,"description":"Use cClock for free online time tools: live clock, countdown timer, stopwatch, multiple alarms, Pomodoro timer and world clock. Fast and easy to use."}]}</script>
   <link rel="preload" as="image" href="cclock-hero-720.webp" imagesrcset="cclock-hero-720.webp 720w, cclock-hero-1200.webp 1200w, cclock-hero.webp 1600w" imagesizes="(min-width: 1100px) min(1500px, calc(100vw - 48px)), (max-width: 560px) calc(100vw - 28px), calc(100vw - 44px)" fetchpriority="high">
-  <link rel="stylesheet" href="clock-bundle-v1.css">
+  <style>
+/* styles-v16.css */
+:root{--orange:#ff6a00;--orange2:#ff8a1f;--bg:#080b10;--panel:#11161d;--panel2:#171d25;--text:#f7f8fa;--muted:#9ca6b4;--line:#27303b;--shadow:0 18px 55px rgba(0,0,0,.32)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}.topbar{height:74px;padding:0 max(22px,calc((100vw - 1180px)/2));display:flex;align-items:center;gap:28px;position:sticky;top:0;z-index:50;background:rgba(7,10,14,.94);border-bottom:1px solid #20262e;backdrop-filter:blur(14px)}.brand{font-size:29px;font-weight:800;color:#fff;text-decoration:none;letter-spacing:-1.5px;white-space:nowrap}.brand>span{color:var(--orange)}.main-nav{display:flex;gap:4px;margin:auto}.nav-link,.icon-btn,.compact-btn,.tool-card{border:0;color:#c4cbd4;background:transparent;cursor:pointer}.nav-link{padding:27px 12px 23px;border-bottom:3px solid transparent;font-weight:600}.nav-link:hover,.nav-link.active{color:#fff;border-color:var(--orange)}.top-actions{display:flex;gap:8px}.icon-btn,.compact-btn{background:#171c23;border:1px solid #2a313b;border-radius:9px;padding:9px 11px}.compact-btn{font-weight:700}.hero{height:430px;max-width:1180px;margin:28px auto 0;border-radius:22px;position:relative;overflow:hidden;background:radial-gradient(circle at 72% 30%,rgba(255,111,0,.22),transparent 28%),linear-gradient(125deg,#111927 0%,#10151d 44%,#22160e 70%,#0a0d12 100%);box-shadow:var(--shadow)}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(160deg,transparent 45%,rgba(255,106,0,.09)),radial-gradient(ellipse at 50% 115%,#19222b 0 26%,transparent 27%),radial-gradient(ellipse at 20% 110%,#131b23 0 30%,transparent 31%);opacity:.9}.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,8,12,.72),rgba(5,8,12,.16) 60%,rgba(5,8,12,.42))}.hero-content{position:relative;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-shadow:0 3px 20px #000}.eyebrow,.section-kicker{font-size:12px;letter-spacing:2.5px;font-weight:800;color:var(--orange);margin:0 0 10px}.clock-display{font-size:clamp(68px,10vw,126px);line-height:1;font-weight:800;letter-spacing:-6px;font-variant-numeric:tabular-nums}.clock-display span{color:var(--orange)}.date-display{font-size:21px;margin-top:18px}.timezone-display{color:#c9cdd2;margin-top:7px}.hero-actions{margin-top:25px}.primary-btn,.secondary-btn,.glass-btn,.preset-row button{border:1px solid transparent;border-radius:10px;padding:12px 20px;font-weight:750;cursor:pointer;font-size:15px}.primary-btn{background:linear-gradient(135deg,var(--orange),var(--orange2));color:white;box-shadow:0 8px 24px rgba(255,106,0,.2)}.secondary-btn,.glass-btn,.preset-row button{background:#1a2028;border-color:#303944;color:#e8ebef}.glass-btn{background:rgba(15,18,22,.72)}button:disabled{opacity:.45;cursor:not-allowed}.tool-grid{max-width:1180px;margin:18px auto 0;display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.tool-card{min-height:105px;background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:15px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;transition:.2s}.tool-card:hover,.tool-card.active{transform:translateY(-2px);border-color:var(--orange);background:#181b1f}.tool-card strong{font-size:14px;color:#fff}.tool-card small{font-size:11px;color:var(--muted)}.tool-icon{font-size:24px;color:var(--orange)}.tool-panel{max-width:1180px;margin:18px auto 0;padding:34px;text-align:center;background:linear-gradient(135deg,var(--panel),#0d1117);border:1px solid var(--line);border-radius:18px}.tool-panel h2{font-size:30px;margin:0 0 18px}.panel-display{font-size:clamp(48px,7vw,78px);font-weight:800;font-variant-numeric:tabular-nums;margin:16px 0 24px}.timer-inputs{display:flex;justify-content:center;gap:12px;margin-bottom:18px}.timer-inputs label{color:var(--muted);font-size:12px;text-transform:uppercase;font-weight:700}.timer-inputs input,.time-input{display:block;width:110px;margin-top:7px;padding:12px;background:#0b0f14;color:#fff;border:1px solid #303944;border-radius:9px;text-align:center;font-size:18px}.time-input{width:180px;margin:18px auto}.preset-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:14px 0 22px}.preset-row button:hover{border-color:var(--orange);color:#fff}.world-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.world-time{padding:20px;background:#0c1117;border:1px solid var(--line);border-radius:12px}.world-time strong,.world-time span{display:block}.world-time span{font-size:25px;margin-top:8px;font-variant-numeric:tabular-nums}.status-text{color:var(--muted)}.benefits{max-width:1180px;margin:18px auto 42px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.benefits div{padding:19px;border:1px solid var(--line);border-radius:13px;background:var(--panel);text-align:center}.benefits strong,.benefits span{display:block}.benefits span{color:var(--muted);font-size:13px;margin-top:5px}footer{text-align:center;border-top:1px solid var(--line);padding:32px;color:var(--muted)}.footer-brand{font-size:24px}body.light{--bg:#eef1f5;--panel:#fff;--panel2:#f5f7f9;--text:#101318;--muted:#66717e;--line:#d8dee6}body.light .topbar{background:rgba(255,255,255,.94)}body.light .brand{color:#111}body.light .nav-link{color:#525d69}body.light .nav-link.active{color:#111}body.light .tool-card strong,body.light .secondary-btn,body.light .preset-row button{color:#15191e}body.light .icon-btn,body.light .compact-btn,body.light .secondary-btn,body.light .preset-row button{background:#f4f5f7;color:#111}body.light .timer-inputs input,body.light .time-input{background:#fff;color:#111}@media(max-width:900px){.main-nav{display:none}.topbar{justify-content:space-between}.tool-grid{grid-template-columns:repeat(3,1fr);margin-left:14px;margin-right:14px}.hero,.tool-panel,.benefits{margin-left:14px;margin-right:14px}.world-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.topbar{height:64px;padding:0 14px}.brand{font-size:25px}.hero{height:390px;margin-top:14px}.clock-display{letter-spacing:-3px}.tool-grid{grid-template-columns:repeat(2,1fr)}.tool-panel{padding:25px 14px}.timer-inputs{gap:5px}.timer-inputs input{width:88px}.world-grid,.benefits{grid-template-columns:1fr}.top-actions .icon-btn:first-child{display:none}}
+
+/* Light mode contrast fixes */
+body.light .hero .clock-display{color:#fff}
+body.light .hero .date-display{color:#fff}
+body.light .hero .timezone-display{color:#e7ebef}
+body.light .hero .eyebrow{color:var(--orange)}
+body.light .hero .glass-btn{background:rgba(15,18,22,.78);border-color:#46505d;color:#fff}
+body.light .tool-panel{background:linear-gradient(135deg,#fff,#f3f5f7);color:#101318}
+body.light .panel-display{color:#101318}
+body.light .world-time{background:#fff;border-color:#cbd3dc;color:#101318}
+body.light .world-time strong{color:#1a2028}
+body.light .world-time span{color:#101318}
+body.light .tool-card{background:#fff;color:#101318}
+body.light .tool-card:hover{background:#f7f8fa}
+body.light .tool-card.active{background:#171b20}
+body.light .tool-card.active strong{color:#fff}
+body.light .tool-card.active small{color:#b7c0ca}
+body.light .tool-card small{color:#65717e}
+
+
+/* Desktop hero: cinematic 16:9 presentation */
+@media (min-width:901px){
+  .hero{
+    width:min(1180px,calc(100vw - 44px));
+    max-width:1180px;
+    height:auto;
+    aspect-ratio:16/9;
+    max-height:none;
+  }
+}
+
+/* Native alarm time control visibility */
+body:not(.light) #alarm-time{color-scheme:dark;color:#fff!important;background:#0b0f14!important}
+body:not(.light) #alarm-time::-webkit-calendar-picker-indicator{filter:invert(1);opacity:.9;cursor:pointer}
+body.light #alarm-time{color-scheme:light;color:#101318!important;background:#fff!important}
+body.light #alarm-time::-webkit-calendar-picker-indicator{filter:none;opacity:.85;cursor:pointer}
+
+.world-clock-link{display:inline-flex;align-items:center;gap:8px;color:inherit;text-decoration:none;border-radius:10px;padding:4px 10px;transition:.2s}
+.world-clock-link:hover{color:var(--orange);background:rgba(255,112,0,.09)}
+
+/* Custom alarm clock icon: reliable contrast in both themes */
+.alarm-time-wrap{position:relative;display:inline-block}
+.alarm-time-wrap .time-input{padding-right:48px}
+.alarm-clock-icon{position:absolute;right:15px;top:50%;transform:translateY(-50%);color:#fff;font-size:20px;line-height:1;pointer-events:none;z-index:3}
+body.light .alarm-clock-icon{color:#101318}
+#alarm-time::-webkit-calendar-picker-indicator{opacity:0;position:absolute;right:0;width:48px;height:100%;cursor:pointer}
+
+.alarm-page-link{display:inline-flex;align-items:center;gap:8px;color:inherit;text-decoration:none;border-radius:10px;padding:4px 10px;transition:.2s}
+.alarm-page-link:hover{color:var(--orange);background:rgba(255,112,0,.09)}
+/* Hide native time-picker icon on homepage to avoid duplicate/low-contrast browser icons */
+#alarm-time::-webkit-calendar-picker-indicator{opacity:0!important;width:0!important;padding:0!important;margin:0!important}
+
+/* Homepage Alarm: one reliable theme-aware clock icon */
+.home-alarm-time-wrap{position:relative;display:inline-block}
+.home-alarm-time-wrap .time-input{padding-right:44px}
+.home-alarm-time-wrap #alarm-time::-webkit-calendar-picker-indicator{opacity:0!important;position:absolute;right:0;top:0;width:44px;height:100%;margin:0;padding:0;cursor:pointer}
+.home-alarm-icon{position:absolute;right:14px;top:50%;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;color:#f5f7fa;pointer-events:none;z-index:2}
+body.light .home-alarm-icon{color:#101318}
+
+.home-alarm-icon{background:transparent;border:0;padding:0;cursor:pointer;pointer-events:auto}
+.home-alarm-icon:focus-visible{outline:2px solid #ff6b00;outline-offset:4px;border-radius:4px}
+
+
+/* cClock photographic hero background */
+.hero{
+  background-image:
+    linear-gradient(90deg,rgba(4,7,11,.64),rgba(4,7,11,.24) 52%,rgba(4,7,11,.46)),
+    linear-gradient(180deg,rgba(4,7,11,.10),rgba(4,7,11,.34)),
+    url("cclock-hero.webp");
+  background-size:cover;
+  background-position:center center;
+  background-repeat:no-repeat;
+}
+.hero:before{display:none}
+.hero-overlay{
+  background:radial-gradient(circle at 50% 48%,rgba(0,0,0,.03),rgba(0,0,0,.20) 72%,rgba(0,0,0,.34));
+}
+body.light .hero{
+  background-image:
+    linear-gradient(90deg,rgba(4,7,11,.50),rgba(4,7,11,.13) 52%,rgba(4,7,11,.34)),
+    linear-gradient(180deg,rgba(4,7,11,.05),rgba(4,7,11,.24)),
+    url("cclock-hero.webp");
+}
+@media(max-width:560px){
+  .hero{background-position:center center}
+}
+
+/* Performance & accessibility refinements */
+.sr-only{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+.icon-btn,.compact-btn{
+  min-width:44px;
+  min-height:44px;
+}
+.home-alarm-icon{
+  width:44px;
+  height:44px;
+  right:2px;
+}
+.home-alarm-time-wrap .time-input{
+  padding-right:50px;
+}
+@media(max-width:560px){
+  .top-actions{gap:10px}
+  .primary-btn,.secondary-btn,.glass-btn,.preset-row button{min-height:44px}
+}
+
+
+/* LCP optimization: render hero as a real high-priority image instead of CSS background */
+.hero{
+  background-image:none!important;
+}
+body.light .hero{
+  background-image:none!important;
+}
+.hero-media{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  z-index:0;
+}
+.hero-overlay{
+  z-index:1;
+}
+.hero-content{
+  z-index:2;
+}
+
+/* Reduce initial rendering work below the fold */
+.tool-panel,.benefits,footer{
+  content-visibility:auto;
+  contain-intrinsic-size:1px 420px;
+}
+.benefits{contain-intrinsic-size:1px 120px}
+footer{contain-intrinsic-size:1px 150px}
+@media(max-width:560px){
+  .tool-panel{contain-intrinsic-size:1px 500px}
+}
+
+
+/* Discreet SEO/internal-link sections */
+.seo-links-section{
+  max-width:1180px;
+  margin:18px auto 0;
+  padding:28px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:16px;
+  content-visibility:auto;
+  contain-intrinsic-size:1px 260px;
+}
+.seo-links-head{text-align:center;max-width:820px;margin:0 auto 20px}
+.seo-links-head h2{margin:0 0 8px;font-size:clamp(1.45rem,2.5vw,2rem)}
+.seo-links-head>p:last-child{margin:0;color:var(--muted);line-height:1.65}
+.seo-links-head a{color:var(--orange);text-decoration:none}
+.seo-links-head a:hover{text-decoration:underline}
+.seo-link-grid{display:grid;gap:10px}
+.timer-links{grid-template-columns:repeat(5,1fr)}
+.tool-links{grid-template-columns:repeat(5,1fr)}
+.seo-link-grid a{
+  min-height:78px;
+  padding:14px 12px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  color:var(--text);
+  text-decoration:none;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  text-align:center;
+  transition:.18s ease;
+  background:rgba(255,255,255,.015);
+}
+.seo-link-grid a:hover{border-color:var(--orange);transform:translateY(-1px);background:rgba(255,106,0,.05)}
+.seo-link-grid strong{font-size:14px}
+.seo-link-grid span{margin-top:5px;color:var(--muted);font-size:12px;line-height:1.35}
+.tools-copy{margin-bottom:42px}
+body.light .seo-link-grid a{background:#fff}
+body.light .seo-link-grid a:hover{background:#fff8f2}
+@media(max-width:900px){
+  .seo-links-section{margin-left:14px;margin-right:14px}
+  .timer-links,.tool-links{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+  .seo-links-section{padding:22px 14px}
+  .timer-links,.tool-links{grid-template-columns:1fr}
+  .seo-link-grid a{min-height:66px}
+}
+
+
+/* cclock-3 desktop app-first prototype */
+.clock-customizer{display:none}
+@media(min-width:1100px){
+  .topbar{
+    height:72px;
+    padding:0 max(28px,calc((100vw - 1500px)/2));
+  }
+  main{overflow:visible}
+  .hero{
+    width:calc(100vw - 48px);
+    max-width:1500px;
+    height:calc(100vh - 96px);
+    min-height:620px;
+    max-height:980px;
+    aspect-ratio:auto;
+    margin:24px auto 0;
+    border-radius:24px;
+  }
+  .hero-content{padding:70px 40px 130px}
+  .eyebrow{font-size:13px;letter-spacing:3px;margin-bottom:18px}
+  .clock-display{
+    --clock-scale:1;
+    --clock-color:#ffffff;
+    font-size:calc(clamp(110px,12.5vw,210px) * var(--clock-scale));
+    letter-spacing:calc(-7px * var(--clock-scale));
+    color:var(--clock-color);
+    line-height:.95;
+    transition:font-size .18s ease,color .18s ease;
+    text-shadow:0 5px 28px rgba(0,0,0,.55);
+    white-space:nowrap;
+  }
+  .clock-display span{color:inherit}
+  .date-display{font-size:clamp(22px,2vw,30px);margin-top:26px}
+  .timezone-display{font-size:15px;margin-top:9px}
+  .hero-actions{margin-top:30px}
+  .hero-actions .primary-btn,.hero-actions .glass-btn{min-height:48px;padding:13px 23px}
+  .clock-customizer{
+    display:flex;
+    position:absolute;
+    top:22px;
+    right:22px;
+    z-index:4;
+    align-items:center;
+    gap:8px;
+  }
+  .clock-size-control,.clock-palette-toggle{
+    width:44px;height:44px;border-radius:11px;border:1px solid rgba(255,255,255,.25);
+    background:rgba(8,11,16,.62);color:#fff;backdrop-filter:blur(10px);
+    font-size:22px;font-weight:800;cursor:pointer;
+  }
+  .clock-size-control:hover,.clock-palette-toggle:hover{border-color:var(--orange);background:rgba(8,11,16,.82)}
+  .clock-palette{
+    display:none;
+    align-items:center;
+    gap:8px;
+    padding:8px 10px;
+    border:1px solid rgba(255,255,255,.22);
+    border-radius:12px;
+    background:rgba(8,11,16,.72);
+    backdrop-filter:blur(10px);
+  }
+  .clock-palette.show{display:flex}
+  .clock-color{
+    width:26px;height:26px;border-radius:50%;border:2px solid rgba(255,255,255,.55);
+    cursor:pointer;padding:0;
+  }
+  .clock-color[aria-pressed="true"]{outline:2px solid #fff;outline-offset:2px}
+  .clock-color[data-color="#ffffff"]{background:#fff}
+  .clock-color[data-color="#ff6a00"]{background:#ff6a00}
+  .clock-color[data-color="#ef4444"]{background:#ef4444}
+  .clock-color[data-color="#22c55e"]{background:#22c55e}
+  .clock-color[data-color="#3b82f6"]{background:#3b82f6}
+  .tool-grid{
+    width:calc(100vw - 80px);
+    max-width:1320px;
+    margin:-106px auto 0;
+    position:relative;
+    z-index:5;
+    grid-template-columns:repeat(6,1fr);
+    gap:10px;
+  }
+  .tool-card{
+    min-height:88px;
+    background:rgba(13,18,24,.88);
+    backdrop-filter:blur(12px);
+    border-color:rgba(255,255,255,.13);
+  }
+  .tool-card strong{font-size:13px}
+  .tool-card small{font-size:10.5px}
+  .tool-icon{font-size:21px}
+  .tool-panel:first-of-type{margin-top:34px}
+}
+@media(min-width:1100px) and (max-height:760px){
+  .hero{min-height:560px;height:calc(100vh - 88px)}
+  .hero-content{padding-bottom:110px}
+  .clock-display{font-size:calc(clamp(92px,11vw,165px) * var(--clock-scale))}
+  .date-display{margin-top:18px}
+  .hero-actions{margin-top:20px}
+}
+
+
+/* Optional plain background mode */
+@media(min-width:1100px){
+  .hero.no-photo .hero-media{display:none}
+  .hero.no-photo{
+    background:linear-gradient(180deg,#0b1016 0%,#0a0f15 100%)!important;
+  }
+  .hero.no-photo .hero-overlay{
+    background:radial-gradient(circle at 50% 45%,rgba(255,106,0,.055),transparent 38%),linear-gradient(180deg,rgba(255,255,255,.01),rgba(0,0,0,.12));
+  }
+  .hero.no-photo .clock-display{ text-shadow:none }
+  .hero.no-photo .date-display,
+  .hero.no-photo .timezone-display{ text-shadow:none }
+  #clock-background-toggle[aria-pressed="false"]{
+    opacity:.68;
+    border-style:dashed;
+  }
+}
+
+
+/* Clearer background toggle label */
+@media(min-width:1100px){
+  #clock-background-toggle{
+    width:auto;
+    min-width:48px;
+    padding:0 11px;
+    font-size:12px;
+    letter-spacing:.4px;
+  }
+}
+
+
+/* cclock-3: keep user-selected clock color in light mode */
+@media(min-width:1100px){
+  body.light .hero .clock-display{
+    color:var(--clock-color)!important;
+  }
+  body.light .hero.no-photo{
+    background:linear-gradient(180deg,#eef2f6 0%,#dde3ea 100%)!important;
+  }
+  body.light .hero.no-photo .hero-overlay{
+    background:radial-gradient(circle at 50% 45%,rgba(255,106,0,.045),transparent 38%);
+  }
+  body.light .hero.no-photo .date-display{
+    color:#1f2933;
+  }
+  body.light .hero.no-photo .timezone-display{
+    color:#5f6b78;
+  }
+  body.light .hero.no-photo .eyebrow{
+    color:var(--orange);
+  }
+}
+
+
+/* cclock-3 final desktop polish */
+@media(min-width:1100px){
+  .clock-customizer{
+    padding:5px;
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:14px;
+    background:rgba(8,11,16,.20);
+  }
+  .clock-size-control:disabled{
+    opacity:.38;
+    cursor:not-allowed;
+    border-color:rgba(255,255,255,.12);
+  }
+  .clock-palette-toggle[aria-pressed="false"]{
+    border-color:rgba(255,106,0,.48);
+  }
+  .clock-palette-toggle:focus-visible,
+  .clock-size-control:focus-visible,
+  .clock-color:focus-visible{
+    outline:2px solid #fff;
+    outline-offset:2px;
+  }
+  body.light .clock-customizer{
+    background:rgba(255,255,255,.12);
+  }
+}
+
+
+/* Homepage clock appearance controls on tablet and mobile */
+@media(max-width:1099px){
+  .clock-customizer{
+    display:flex;
+    position:absolute;
+    top:12px;
+    right:12px;
+    z-index:6;
+    align-items:center;
+    gap:6px;
+    padding:5px;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:12px;
+    background:rgba(8,11,16,.38);
+    backdrop-filter:blur(10px);
+  }
+  .clock-size-control,.clock-palette-toggle{
+    width:40px;
+    height:40px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,.25);
+    background:rgba(8,11,16,.68);
+    color:#fff;
+    font-size:19px;
+    font-weight:800;
+    cursor:pointer;
+  }
+  #clock-background-toggle{
+    width:auto;
+    min-width:44px;
+    padding:0 9px;
+    font-size:11px;
+    letter-spacing:.3px;
+  }
+  .clock-size-control:disabled{opacity:.38;cursor:not-allowed}
+  .clock-palette{
+    display:none;
+    position:absolute;
+    top:48px;
+    right:0;
+    align-items:center;
+    gap:7px;
+    padding:8px 9px;
+    border:1px solid rgba(255,255,255,.22);
+    border-radius:12px;
+    background:rgba(8,11,16,.86);
+    backdrop-filter:blur(12px);
+    box-shadow:0 10px 30px rgba(0,0,0,.28);
+  }
+  .clock-palette.show{display:flex}
+  .clock-color{
+    width:25px;height:25px;border-radius:50%;
+    border:2px solid rgba(255,255,255,.55);
+    cursor:pointer;padding:0;
+  }
+  .clock-color[aria-pressed="true"]{outline:2px solid #fff;outline-offset:2px}
+  .clock-color[data-color="#ffffff"]{background:#fff}
+  .clock-color[data-color="#ff6a00"]{background:#ff6a00}
+  .clock-color[data-color="#ef4444"]{background:#ef4444}
+  .clock-color[data-color="#22c55e"]{background:#22c55e}
+  .clock-color[data-color="#3b82f6"]{background:#3b82f6}
+
+  .clock-display{
+    --clock-scale:.75;
+    --clock-color:#ffffff;
+    font-size:calc(clamp(52px,10vw,108px) * var(--clock-scale));
+    letter-spacing:calc(-4px * var(--clock-scale));
+    color:var(--clock-color);
+    white-space:nowrap;
+    transition:font-size .18s ease,color .18s ease;
+  }
+  .clock-display span{color:inherit}
+
+  .hero.no-photo .hero-media{display:none}
+  .hero.no-photo{background:linear-gradient(180deg,#0b1016 0%,#0a0f15 100%)!important}
+  .hero.no-photo .hero-overlay{
+    background:radial-gradient(circle at 50% 45%,rgba(255,106,0,.055),transparent 38%),linear-gradient(180deg,rgba(255,255,255,.01),rgba(0,0,0,.12));
+  }
+  .hero.no-photo .clock-display,
+  .hero.no-photo .date-display,
+  .hero.no-photo .timezone-display{text-shadow:none}
+  #clock-background-toggle[aria-pressed="false"]{opacity:.68;border-style:dashed}
+
+  body.light .hero .clock-display{color:var(--clock-color)!important}
+  body.light .hero.no-photo{background:linear-gradient(180deg,#eef2f6 0%,#dde3ea 100%)!important}
+  body.light .hero.no-photo .hero-overlay{
+    background:radial-gradient(circle at 50% 45%,rgba(255,106,0,.045),transparent 38%);
+  }
+  body.light .hero.no-photo .date-display{color:#1f2933}
+  body.light .hero.no-photo .timezone-display{color:#5f6b78}
+}
+@media(max-width:560px){
+  .clock-customizer{top:8px;right:8px;gap:4px;padding:4px}
+  .clock-size-control,.clock-palette-toggle{width:34px;height:34px;border-radius:9px;font-size:17px}
+  #clock-background-toggle{min-width:38px;padding:0 7px;font-size:10px}
+  .clock-palette{top:41px;gap:6px;padding:7px}
+  .clock-color{width:23px;height:23px}
+  .clock-display{
+    font-size:calc(clamp(46px,12vw,64px) * var(--clock-scale));
+    letter-spacing:calc(-2.5px * var(--clock-scale));
+  }
+  .eyebrow{margin-top:28px}
+}
+
+@media (max-width: 560px) {
+  .top-actions .icon-btn:first-child {
+    display: inline-flex !important;
+  }
+}
+
+
+/* consent-v1.css */
+/* cClock consent banner — optional analytics is off by default */
+.cc-consent-backdrop{
+  position:fixed;inset:0;background:rgba(0,0,0,.42);z-index:9998;
+  opacity:0;pointer-events:none;transition:opacity .18s ease;
+}
+.cc-consent-backdrop.show{opacity:1;pointer-events:auto}
+.cc-consent{
+  position:fixed;left:18px;right:18px;bottom:18px;z-index:9999;
+  max-width:1180px;margin:0 auto;padding:20px 22px;
+  background:rgba(15,20,27,.98);color:#f7f8fa;
+  border:1px solid #303944;border-radius:16px;
+  box-shadow:0 20px 70px rgba(0,0,0,.48);
+  display:none;gap:18px;align-items:center;
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+}
+.cc-consent.show{display:flex}
+.cc-copy{flex:1;min-width:0}
+.cc-title{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:800;margin:0 0 6px}
+.cc-shield{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;background:rgba(255,106,0,.12);color:#ff6a00}
+.cc-text{margin:0;color:#b6c0cc;font-size:13px;line-height:1.55;max-width:760px}
+.cc-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.cc-btn{
+  border:1px solid #3a4451;border-radius:9px;padding:11px 15px;
+  min-height:44px;font-size:13px;font-weight:800;cursor:pointer;
+  background:#1b222b;color:#eef2f6;
+}
+.cc-btn:hover{border-color:#ff6a00}
+.cc-btn.primary{background:linear-gradient(135deg,#ff6a00,#ff8a1f);border-color:transparent;color:#fff}
+.cc-btn.ghost{background:transparent}
+.cc-modal{
+  position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);
+  z-index:10000;width:min(520px,calc(100vw - 28px));padding:24px;
+  border:1px solid #303944;border-radius:16px;background:#10161e;color:#f7f8fa;
+  box-shadow:0 25px 80px rgba(0,0,0,.55);display:none;
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+}
+.cc-modal.show{display:block}
+.cc-modal h2{font-size:21px;margin:0 0 8px}
+.cc-modal>p{color:#aeb8c5;font-size:13px;line-height:1.55;margin:0 0 18px}
+.cc-row{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding:15px 0;border-top:1px solid #27303b}
+.cc-row strong{display:block;font-size:14px;margin-bottom:4px}
+.cc-row small{display:block;color:#9ca6b4;line-height:1.45}
+.cc-state{font-size:12px;font-weight:800;color:#9ca6b4;white-space:nowrap}
+.cc-switch{position:relative;width:46px;height:26px;flex:0 0 auto}
+.cc-switch input{position:absolute;opacity:0}
+.cc-slider{position:absolute;inset:0;border-radius:999px;background:#38414d;cursor:pointer;transition:.18s}
+.cc-slider:before{content:"";position:absolute;width:20px;height:20px;left:3px;top:3px;border-radius:50%;background:#fff;transition:.18s}
+.cc-switch input:checked+.cc-slider{background:#ff6a00}
+.cc-switch input:checked+.cc-slider:before{transform:translateX(20px)}
+.cc-modal-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:18px}
+.cc-settings-link{
+  border:0;background:transparent;color:inherit;opacity:.75;
+  text-decoration:underline;text-underline-offset:3px;cursor:pointer;font:inherit;padding:4px 6px;
+}
+.cc-settings-link:hover{opacity:1;color:#ff6a00}
+body.light .cc-consent,body.light .cc-modal{background:#fff;color:#101318;border-color:#d3dae3}
+body.light .cc-text,body.light .cc-modal>p,body.light .cc-row small{color:#66717e}
+body.light .cc-row{border-color:#dde3ea}
+body.light .cc-btn{background:#f3f5f7;color:#101318;border-color:#cdd5de}
+body.light .cc-btn.primary{background:linear-gradient(135deg,#ff6a00,#ff8a1f);color:#fff;border-color:transparent}
+@media(max-width:760px){
+  .cc-consent{left:10px;right:10px;bottom:10px;display:none;align-items:stretch;padding:17px;gap:14px}
+  .cc-consent.show{display:block}
+  .cc-actions{margin-top:14px;display:grid;grid-template-columns:1fr 1fr}
+  .cc-actions .cc-btn:last-child{grid-column:1/-1}
+  .cc-btn{width:100%}
+}
+@media(prefers-reduced-motion:reduce){.cc-consent-backdrop,.cc-slider,.cc-slider:before{transition:none}}
+
+
+/* Desktop polish: clearer hierarchy, tighter footprint, balanced actions */
+@media(min-width:761px){
+  .cc-consent{
+    bottom:12px;
+    padding:18px 20px;
+    gap:24px;
+    border-radius:14px;
+  }
+  .cc-title{font-size:18px;margin-bottom:5px}
+  .cc-text{font-size:13.5px;line-height:1.5}
+  .cc-actions{
+    flex-wrap:nowrap;
+    align-items:center;
+    gap:10px;
+  }
+  .cc-btn{
+    min-width:112px;
+    padding:11px 17px;
+    font-size:13.5px;
+    white-space:nowrap;
+  }
+  .cc-btn.primary{min-width:138px}
+}
+
+
+/* digit-style-v2.css */
+/* cClock digital digit mode — DSEG7 Classic Bold (OFL-1.1) */
+@font-face{
+  font-family:"DSEG7 Classic";
+  src:url("https://cdn.jsdelivr.net/npm/@fontsource/dseg7-classic@5.3.0/files/dseg7-classic-latin-700-normal.woff2") format("woff2");
+  font-style:normal;
+  font-weight:700;
+  font-display:swap;
+}
+
+#digit-style-toggle{
+  min-width:54px;
+  font-size:11px;
+  letter-spacing:.7px;
+  font-weight:800;
+}
+#digit-style-toggle[aria-pressed="true"]{
+  border-color:var(--orange)!important;
+  color:var(--orange)!important;
+  box-shadow:inset 0 0 0 1px rgba(255,106,0,.18);
+}
+body.digital-digits .clock-display,
+body.digital-digits .panel-display,
+body.digital-digits #timer-display,
+body.digital-digits #stopwatch-display,
+body.digital-digits #pomodoro-display,
+body.digital-digits .world-time span,
+body.digital-digits .city-clock time,
+body.digital-digits .time-display,
+body.digital-digits #d{
+  font-family:"DSEG7 Classic",ui-monospace,Consolas,"Liberation Mono",monospace!important;
+  font-variant-numeric:tabular-nums;
+  font-weight:700!important;
+  font-style:normal!important;
+  letter-spacing:.015em!important;
+}
+body.digital-digits .clock-display{
+  letter-spacing:calc(.012em * var(--clock-scale,1))!important;
+}
+body.digital-digits .panel-display,
+body.digital-digits #d{
+  text-shadow:0 0 18px rgba(255,106,0,.10);
+}
+@media(max-width:560px){
+  #digit-style-toggle{min-width:48px;padding-left:8px;padding-right:8px}
+}
+
+
+/* Mobile: keep long timer/stopwatch values fully visible and centered */
+@media(max-width:560px){
+  body.digital-digits .panel-display,
+  body.digital-digits #timer-display,
+  body.digital-digits #stopwatch-display,
+  body.digital-digits #d{
+    display:block;
+    width:100%;
+    max-width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    white-space:nowrap;
+    font-size:clamp(18px,6.1vw,30px)!important;
+    letter-spacing:0!important;
+    line-height:1.08;
+  }
+}
+
+/* Narrow phones: allow the full 12-character digital time to fit inside card padding. */
+@media(max-width:380px){
+  body.digital-digits #timer-display,
+  body.digital-digits #stopwatch-display{
+    font-size:5.8vw!important;
+  }
+}
+
+/* Chrome/DSEG7: suppress stray baseline strokes below the digital glyphs.
+   Clip only the bottom 5px of the line box; no change to digit size or layout. */
+body.digital-digits .hero .clock-display{
+  clip-path:inset(0 0 5px 0);
+}
+
+
+/* fullscreen-app-v1.css */
+/* cClock fullscreen app navigation */
+#fullscreen-app-shell{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:var(--bg,#080b10);
+}
+#fullscreen-app-shell.active{display:block}
+#fullscreen-app-frame{
+  width:100%;
+  height:100%;
+  border:0;
+  background:var(--bg,#080b10);
+}
+
+
+/* analog-clock-v1.css */
+/* cClock Modern Glow analog dial — preview branch cclock-4 */
+#analog-clock{display:none;position:relative;isolation:isolate;width:min(64vw,620px);aspect-ratio:1;flex:none;margin:8px auto 12px;border:7px solid var(--analog-ring-color,#ff6a00);border-radius:50%;background:radial-gradient(circle at 42% 30%,#202b39 0%,#111821 49%,#080c12 83%);box-shadow:0 0 0 3px rgba(255,255,255,.24),0 0 19px 3px var(--analog-ring-glow,rgba(255,106,0,.45)),0 0 55px var(--analog-ring-glow,rgba(255,106,0,.45)),inset 0 0 0 6px rgba(0,0,0,.7),inset 0 0 40px #03060b;transition:border-color .2s,box-shadow .2s}
+#analog-clock:before{content:"";position:absolute;inset:2.8%;border:1px solid rgba(255,255,255,.15);border-radius:50%;pointer-events:none}
+#analog-clock .analog-tick{position:absolute;left:calc(50% - 1px);top:4.8%;width:2px;height:2.1%;background:rgba(232,239,250,.6);border-radius:3px;transform-origin:50% center}
+#analog-clock .analog-tick.major{width:4px;height:4%;background:#f1f4f9;box-shadow:0 0 5px rgba(255,255,255,.2)}
+#analog-clock .analog-tick.quarter{width:6px;height:5.5%;background:var(--analog-ring-color,#ff6a00);box-shadow:0 0 8px var(--analog-ring-glow,rgba(255,106,0,.45))}
+#analog-clock .analog-number{position:absolute;transform:translate(-50%,-50%);font-size:clamp(17px,2.7vw,36px);font-weight:750;font-variant-numeric:tabular-nums;line-height:1;color:#f7f8fb;text-shadow:0 3px 5px #000;pointer-events:none}
+#analog-clock .analog-brand{position:absolute;left:50%;top:29%;transform:translate(-50%,-50%);font-size:clamp(15px,2.2vw,27px);font-weight:850;letter-spacing:-1px;color:#fff;white-space:nowrap}
+#analog-clock .analog-brand span{color:var(--orange,#ff6a00)}
+#analog-clock .analog-hand{position:absolute;bottom:50%;left:50%;transform-origin:bottom center;border-radius:12px;will-change:transform;z-index:3}
+#analog-hour{height:24%;width:clamp(7px,.9vw,12px);margin-left:calc(clamp(7px,.9vw,12px)/-2);background:linear-gradient(90deg,#858e99,#fff 42%,#e5ebf2 67%,#717b87);box-shadow:2px 2px 5px #000}
+#analog-minute{height:35%;width:clamp(5px,.65vw,9px);margin-left:calc(clamp(5px,.65vw,9px)/-2);background:linear-gradient(90deg,#8e98a4,#fff 40%,#d7dfe9 70%,#6c7681);box-shadow:2px 2px 5px #000}
+#analog-second{height:40%;width:2.5px;margin-left:-1.25px;background:var(--analog-ring-color,#ff6a00);box-shadow:0 0 5px var(--analog-ring-glow,rgba(255,106,0,.45));z-index:4}
+#analog-clock .analog-center{position:absolute;width:18px;height:18px;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--analog-ring-color,#ff6a00);border:4px solid #e8edf4;border-radius:50%;box-shadow:0 2px 5px #000;z-index:5}
+#analog-clock .analog-readout{position:absolute;top:72%;left:50%;transform:translate(-50%,-50%);border:1px solid var(--analog-ring-color,#ff6a00);border-radius:30px;background:rgba(3,6,10,.87);padding:5px 14px;font-size:clamp(14px,1.8vw,23px);font-weight:800;color:#fff;font-variant-numeric:tabular-nums;letter-spacing:.5px;box-shadow:0 0 13px var(--analog-ring-glow,rgba(255,106,0,.45));white-space:nowrap;z-index:6}
+body.analog-mode #clock-display{display:none!important}
+body.analog-mode #analog-clock{display:block}
+body.analog-mode .hero{height:auto!important;min-height:780px;overflow:visible}
+body.analog-mode .hero-content{height:auto;min-height:780px;padding:35px 16px 28px;justify-content:center}
+body.analog-mode .hero .eyebrow{margin-bottom:6px}
+body.analog-mode .hero-actions{margin-top:14px}
+#analog-mode-toggle[aria-pressed="true"]{border-color:var(--orange,#ff6a00);color:var(--orange,#ff6a00)}
+#analog-mode-toggle{min-width:42px;font-weight:800}
+@media(max-width:900px){#analog-clock{width:min(78vw,560px)}body.analog-mode .hero,body.analog-mode .hero-content{min-height:0}}
+@media(max-width:560px){#analog-clock{width:min(85vw,370px);border-width:5px;margin:10px auto 12px}#analog-clock .analog-number{font-size:clamp(16px,5vw,24px)}#analog-clock .analog-brand{font-size:clamp(14px,4vw,20px)}#analog-clock .analog-readout{font-size:clamp(13px,3.5vw,17px);padding:4px 10px}body.analog-mode .hero-content{padding:75px 8px 24px}body.analog-mode .hero{min-height:0}#analog-mode-toggle{font-size:11px;padding:9px!important}}
+@media(prefers-reduced-motion:reduce){#analog-clock{transition:none}}
+
+/* Analog-only layout: timezone above the date; sound/date/fullscreen share one row.
+   Let the hero grow with its content so the tool cards never cover the controls. */
+body.analog-mode .hero{height:auto!important;min-height:0!important;overflow:hidden}
+body.analog-mode .hero-content{display:grid!important;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);grid-template-rows:auto auto auto auto;align-items:center;justify-items:center;column-gap:12px;row-gap:12px;height:auto!important;min-height:0!important;padding:34px 26px 48px!important}
+body.analog-mode .hero .eyebrow{grid-column:1/-1;grid-row:1;margin:0!important}
+body.analog-mode #analog-clock{grid-column:1/-1;grid-row:2;margin:8px auto 8px}
+body.analog-mode .hero .timezone-display{grid-column:1/-1;grid-row:3;margin:0!important;font-size:15px}
+body.analog-mode .hero .date-display{grid-column:2;grid-row:4;margin:0!important;text-align:center;white-space:nowrap;font-size:clamp(17px,2vw,27px)}
+body.analog-mode .hero .hero-actions{display:contents!important}
+body.analog-mode .hero #toggle-sound{grid-column:1;grid-row:4;justify-self:end}
+body.analog-mode .hero #hero-fullscreen{grid-column:3;grid-row:4;justify-self:start}
+body.analog-mode .hero #toggle-sound,body.analog-mode .hero #hero-fullscreen{position:relative;z-index:2;white-space:nowrap}
+@media(max-width:760px){
+ body.analog-mode .hero-content{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto auto auto auto auto;gap:12px;padding:75px 12px 30px!important}
+ body.analog-mode .hero .date-display{grid-column:1/-1;grid-row:4;white-space:normal}
+ body.analog-mode .hero #toggle-sound{grid-column:1;grid-row:5;justify-self:end}
+ body.analog-mode .hero #hero-fullscreen{grid-column:2;grid-row:5;justify-self:start}
+ body.analog-mode .hero #toggle-sound,body.analog-mode .hero #hero-fullscreen{padding:11px 14px;font-size:13px}
+}
+
+/* Prevent the desktop navigation cards from overlapping analog-mode metadata.
+   The regular digital homepage intentionally uses a negative card margin. */
+@media(min-width:1100px){
+ body.analog-mode .hero + .tool-grid{margin-top:18px!important}
+ body.analog-mode .hero{margin-bottom:0!important}
+}
+
+/* Light theme: give the analog dial a bright, readable face while preserving
+   the user's selected accent color on the bezel and quarter-hour markers. */
+body.light #analog-clock{
+ background:radial-gradient(circle at 42% 28%,#ffffff 0%,#f1f5f9 54%,#dce5ee 100%);
+ box-shadow:0 0 0 3px rgba(33,48,67,.16),0 0 19px 3px var(--analog-ring-glow,rgba(255,106,0,.28)),0 0 38px var(--analog-ring-glow,rgba(255,106,0,.22)),inset 0 0 0 6px rgba(255,255,255,.65),inset 0 0 25px rgba(71,85,105,.12);
+}
+body.light #analog-clock:before{border-color:rgba(37,52,73,.2)}
+body.light #analog-clock .analog-tick{background:#8795a8}
+body.light #analog-clock .analog-tick.major{background:#344357;box-shadow:none}
+body.light #analog-clock .analog-tick.quarter{background:var(--analog-ring-color,#ff6a00);box-shadow:0 0 6px var(--analog-ring-glow,rgba(255,106,0,.35))}
+body.light #analog-clock .analog-number{color:#172235;text-shadow:0 1px 1px rgba(255,255,255,.8)}
+body.light #analog-clock .analog-brand{color:#172235;text-shadow:0 1px 1px rgba(255,255,255,.65)}
+body.light #analog-clock #analog-hour{background:linear-gradient(90deg,#344357,#7a899b 45%,#344357);box-shadow:1px 2px 3px rgba(30,41,59,.3)}
+body.light #analog-clock #analog-minute{background:linear-gradient(90deg,#405168,#9aa8b8 45%,#405168);box-shadow:1px 2px 3px rgba(30,41,59,.25)}
+body.light #analog-clock .analog-center{border-color:#fff;box-shadow:0 1px 4px rgba(30,41,59,.35)}
+body.light #analog-clock .analog-readout{background:rgba(255,255,255,.94);color:#172235;box-shadow:0 0 12px var(--analog-ring-glow,rgba(255,106,0,.25))}
+
+
+</style>
 <style>
 @keyframes cclock-title-pulse{0%,100%{opacity:1;text-shadow:0 0 0 transparent}50%{opacity:.52;text-shadow:0 0 24px rgba(255,106,0,.95),0 0 42px rgba(255,106,0,.55)}}
 #timer h2.is-running,#stopwatch h2.is-running,#pomodoro h2.is-running{animation:cclock-title-pulse 1.6s ease-in-out infinite}
@@ -57,7 +825,7 @@ body:not(.analog-mode) #clock .hero-content > .eyebrow {
   body.digital-digits #clock-display{line-height:1.18!important;padding-bottom:5px;flex-shrink:0;clip-path:inset(0 0 5px 0)}
 }
 </style>
-<script src="ads-consent-v1.js"></script></head>
+<script src="ads-consent-v1.js" defer></script></head>
 <body>
 <header class="topbar">
   <a class="brand" href="https://cclock.eu/" aria-label="cClock home"><span>c</span>Clock</a>
