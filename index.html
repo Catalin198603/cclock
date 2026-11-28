@@ -825,12 +825,12 @@ body:not(.analog-mode) #clock .hero-content > .eyebrow {
   body.digital-digits #clock-display{line-height:1.18!important;padding-bottom:5px;flex-shrink:0;clip-path:inset(0 0 5px 0)}
 }
 </style>
-<script src="ads-consent-v1.js" defer></script></head>
+<script src="ads-consent-v1.js" defer></script><link rel="stylesheet" href="timer-menu-v1.css"><script src="timer-menu-v1.js" defer></script></head>
 <body>
 <header class="topbar">
   <a class="brand" href="https://cclock.eu/" aria-label="cClock home"><span>c</span>Clock</a>
   <nav class="main-nav" aria-label="Main navigation">
-    <a class="nav-link active" href="#clock">Clock</a><a class="nav-link" href="timer.html">Timer</a><a class="nav-link" href="stopwatch.html">Stopwatch</a><a class="nav-link" href="alarm.html">Alarm</a><a class="nav-link" href="pomodoro-timer.html">Pomodoro</a><a class="nav-link" href="world-clock.html">World Clock</a>
+    <a class="nav-link active" href="#clock">Clock</a><details class="timer-menu"><summary class="nav-link">Timer</summary><div class="timer-options"><a href="timer.html">Online Timer</a><a href="classroom-timer.html">Classroom Timer</a><a href="timer.html#preset-timers">Preset Timers</a></div></details><a class="nav-link" href="stopwatch.html">Stopwatch</a><a class="nav-link" href="alarm.html">Alarm</a><a class="nav-link" href="pomodoro-timer.html">Pomodoro</a><a class="nav-link" href="world-clock.html">World Clock</a>
   </nav>
   <div class="top-actions"><button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">☾</button><button id="fullscreen-btn" class="icon-btn" aria-label="Fullscreen">⛶</button><button id="toggle-format" class="compact-btn">24H</button><button id="digit-style-toggle" class="compact-btn" type="button" aria-pressed="false" title="Use digital digits" aria-label="Use digital digit style">DIGI</button></div>
 </header>
@@ -872,7 +872,7 @@ body:not(.analog-mode) #clock .hero-content > .eyebrow {
       <h2 id="time-tools-title">Everything you need to manage time online</h2>
       <p>cClock combines a live <a href="/#clock">online clock</a> with a flexible <a href="timer.html">online timer</a>, precise <a href="stopwatch.html">stopwatch</a>, <a href="alarm.html">online alarm clock</a>, <a href="pomodoro-timer.html">Pomodoro timer</a> and <a href="world-clock.html">world clock</a>. All tools work directly in your browser with no signup or download. Choose the live clock to check your local time, a countdown to track a fixed duration, or the stopwatch to measure elapsed time.</p>
     </div>
-    <nav class="seo-link-grid tool-links" aria-label="Free online time tools">
+    <nav class="seo-link-grid tool-links" aria-label="Free online time tools"><a href="classroom-timer.html"><strong>Classroom Timer</strong><span>Visual countdown for teachers and students</span></a>
       <a href="timer.html"><strong>Online Timer</strong><span>Custom countdowns with presets</span></a>
       <a href="stopwatch.html"><strong>Online Stopwatch</strong><span>Precise elapsed time</span></a>
       <a href="alarm.html"><strong>Online Alarm Clock</strong><span>Set multiple alarms</span></a>
