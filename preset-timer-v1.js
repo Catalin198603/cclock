@@ -4,6 +4,7 @@ let soundOn=true,audio=null,tones=[];
 try{soundOn=localStorage.getItem(soundKey)!=='off'}catch(e){}
 const soundButton=document.createElement('button');
 soundButton.type='button';soundButton.className='secondary-btn';
+soundButton.style.position='absolute';soundButton.style.top='12px';soundButton.style.left='12px';
 function soundLabel(){soundButton.textContent=soundOn?'♪ Sound On':'♪ Sound Off';soundButton.setAttribute('aria-pressed',String(soundOn))}
 full.insertAdjacentElement('afterend',soundButton);soundLabel();
 function unlock(){if(!soundOn)return;try{const Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)return;if(!audio)audio=new Audio();if(audio.state!=='running')audio.resume().catch(()=>{})}catch(e){}}
